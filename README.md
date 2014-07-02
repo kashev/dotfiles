@@ -8,4 +8,4 @@ dotfiles
 Various configurations for different programs. Inspired by @daeyun & http://dotfiles.github.io/
 
 # Instructions
-Run `python script/install.py` from inside of `/dotfiles` to create all necessary symlinks.
+Run `python install.py` from inside of `/dotfiles` to create all necessary symlinks.
