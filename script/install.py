@@ -1,7 +1,7 @@
 #!/usr/bin/env python
-# Kashev Dalmia - kashev
 # dotfiles
-# install.py
+# Kashev Dalmia | @kashev | kashev.dalmia@gmail.com
+# README.md
 
 import os
 import glob
