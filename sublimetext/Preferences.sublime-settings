@@ -7,6 +7,7 @@
 	"font_size": 10,
 	"hot_exit": false,
 	"ignored_packages": [],
+	"rulers": [80],
 	"remember_open_files": false,
 	"smart_indent": true,
 	"tab_size": 4,
