@@ -5,12 +5,12 @@
 
 import argparse
 import getpass
-import glob
 import os
 
 HOME_DIR = os.path.join("/home", getpass.getuser())
 
 DOT_INSTALL_FOLDERS = ["git"]
+
 
 def delete_and_link(source, dest, force=False):
     """Delete the destination file if it exists and isn't a link,
@@ -22,6 +22,7 @@ def delete_and_link(source, dest, force=False):
     if not os.path.isfile(dest):
         os.symlink(source, dest)
 
+
 def install_folder(source, dest, force=False):
     """Symlink all the dotfiles in the source to the dest
        (if a symlink doesn't already exist)
@@ -31,20 +32,27 @@ def install_folder(source, dest, force=False):
                         os.path.join(dest, f),
                         force)
 
+
 def install_sublime():
-    """Install Sublime Text 3 settings assuming it is installed through this PPA:
-       http://www.webupd8.org/2013/07/sublime-text-3-ubuntu-ppa-now-available.html
+    """Install Sublime Text 3 settings assuming it is installed through
+       this PPA:
+    http://www.webupd8.org/2013/07/sublime-text-3-ubuntu-ppa-now-available.html
     """
-    SUBLIME_TEXT_CONFIG_LOCATION = os.path.join(HOME_DIR, ".config/sublime-text-3/Packages/User/")
+    ST3_LOCATION = os.path.join(HOME_DIR,
+                                ".config",
+                                "sublime-text-3",
+                                "Packages",
+                                "User")
 
     install_folder(os.path.join(os.getcwd(), "sublimetext"),
-                   SUBLIME_TEXT_CONFIG_LOCATION)
+                   ST3_LOCATION)
 
 
 def main():
     """Parse command line arguments, then do all the installs."""
     parser = argparse.ArgumentParser(
-        description="Install dotfiles and settings from github.com/kashev/dotfiles.")
+        description="Install dotfiles and settings from "
+                    "github.com/kashev/dotfiles.")
 
     parser.add_argument("-f", "--force",
                         help="Force creation of new symlinks.",
