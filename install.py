@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 # dotfiles
 # Kashev Dalmia | @kashev | kashev.dalmia@gmail.com
-# README.md
+# install.py
 
 import argparse
 import getpass
+
 import os
 
 HOME_DIR = os.path.join("/home", getpass.getuser())
@@ -66,6 +67,7 @@ def main():
                        args.force)
 
     install_sublime()
+
 
 if __name__ == '__main__':
     main()
