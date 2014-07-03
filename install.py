@@ -19,15 +19,15 @@ def delete_and_link(source, dest, force=False):
     """
     try:
         if os.path.isfile(dest) and (force or not os.path.islink(dest)):
-            logging.info("Deleting existing {0}".format(dest))
+            logging.info("Deleting existing {}".format(dest))
             os.remove(dest)
 
         if not os.path.isfile(dest):
-            logging.info("Creating symlink {0} to {1}".format(source, dest))
+            logging.info("Creating symlink {} to {}".format(source, dest))
             os.symlink(source, dest)
 
     except Exception as e:
-        logging.critical("Error Creating Symlink {0} to {1} : {2}"
+        logging.critical("Error Creating Symlink {} to {} : {}"
                          .format(source, dest, e))
 
 
@@ -36,7 +36,7 @@ def install_folder(source, dest, force=False):
        (if a symlink doesn't already exist)
     """
     for f in os.listdir(source):
-        logging.info("Installing symlinks for {0}".format(f))
+        logging.info("Installing symlinks for {}".format(f))
         delete_and_link(os.path.join(source, f),
                         os.path.join(dest, f),
                         force)
@@ -53,7 +53,7 @@ def install_sublime():
                            "Packages",
                            "User")
 
-    logging.info("Installing Sublime Text 3 settings to {0}".format(ST3_LOC))
+    logging.info("Installing Sublime Text 3 settings to {}".format(ST3_LOC))
     install_folder(os.path.join(os.getcwd(), "sublimetext"),
                    ST3_LOC)
     logging.info("Done.")
