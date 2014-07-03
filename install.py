@@ -19,16 +19,16 @@ def delete_and_link(source, dest, force=False):
     """
     try:
         if os.path.isfile(dest) and (force or not os.path.islink(dest)):
-            logging.info("Deleting existing %s" % dest)
+            logging.info("Deleting existing {0}".format(dest))
             os.remove(dest)
 
         if not os.path.isfile(dest):
-            logging.info("Creating symlink %s to %s" % (source, dest))
+            logging.info("Creating symlink {0} to {1}".format(source, dest))
             os.symlink(source, dest)
 
     except Exception as e:
-        logging.critical("Error Creating Symlink %s to %s : %s" %
-                         (source, dest, e))
+        logging.critical("Error Creating Symlink {0} to {1} : {2}"
+                         .format(source, dest, e))
 
 
 def install_folder(source, dest, force=False):
@@ -36,11 +36,10 @@ def install_folder(source, dest, force=False):
        (if a symlink doesn't already exist)
     """
     for f in os.listdir(source):
-        logging.info("Installing symlinks for %s..." % f)
+        logging.info("Installing symlinks for {0}".format(f))
         delete_and_link(os.path.join(source, f),
                         os.path.join(dest, f),
                         force)
-        logging.info("Done.")
 
 
 def install_sublime():
@@ -48,15 +47,15 @@ def install_sublime():
        this PPA:
     http://www.webupd8.org/2013/07/sublime-text-3-ubuntu-ppa-now-available.html
     """
-    ST3_LOCATION = os.path.join(HOME_DIR,
-                                ".config",
-                                "sublime-text-3",
-                                "Packages",
-                                "User")
+    ST3_LOC = os.path.join(HOME_DIR,
+                           ".config",
+                           "sublime-text-3",
+                           "Packages",
+                           "User")
 
-    logging.info("Installing Sublime Text 3 Settings to %s" % ST3_LOCATION)
+    logging.info("Installing Sublime Text 3 settings to {0}".format(ST3_LOC))
     install_folder(os.path.join(os.getcwd(), "sublimetext"),
-                   ST3_LOCATION)
+                   ST3_LOC)
     logging.info("Done.")
 
 
