@@ -27,13 +27,16 @@ def install_folder(source, dest, force=False):
        (if a symlink doesn't already exist)
     """
     for f in os.listdir(source):
-        delete_and_link(os.path.join(source, f), os.path.join(dest, f), force)
+        delete_and_link(os.path.join(source, f),
+                        os.path.join(dest, f),
+                        force)
 
 def install_sublime():
     """Install Sublime Text 3 settings assuming it is installed through this PPA:
        http://www.webupd8.org/2013/07/sublime-text-3-ubuntu-ppa-now-available.html
     """
     SUBLIME_TEXT_CONFIG_LOCATION = os.path.join(HOME_DIR, ".config/sublime-text-3/Packages/User/")
+
     install_folder(os.path.join(os.getcwd(), "sublimetext"),
                    SUBLIME_TEXT_CONFIG_LOCATION)
 
@@ -50,7 +53,9 @@ def main():
     args = parser.parse_args()
 
     for folder in DOT_INSTALL_FOLDERS:
-        install_folder(os.path.join(os.getcwd(), folder), HOME_DIR, args.force)
+        install_folder(os.path.join(os.getcwd(), folder),
+                       HOME_DIR,
+                       args.force)
 
     install_sublime()
 
