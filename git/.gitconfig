@@ -117,3 +117,5 @@
 	untracked = red bold
 [github]
 	user = kashev
+[credential]
+	helper = cache
