@@ -10,7 +10,7 @@ import os
 
 HOME_DIR = os.path.join("/home", getpass.getuser())
 
-DOT_INSTALL_FOLDERS = ["git"]
+DOT_INSTALL_FOLDERS = ["git", "vim"]
 
 
 def delete_and_link(source, dest, force=False):
