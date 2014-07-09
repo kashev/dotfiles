@@ -14,8 +14,9 @@ DOT_INSTALL_FOLDERS = ["git", "vim"]
 
 
 def delete_and_link(source, dest, force=False):
-    """Delete the destination file if it exists and isn't a link,
-       then create a link to the destination from the source.
+    """Delete the destination file if it exists and isn't a link, then create
+       a link to the destination from the source. The force option causes
+        symlinks to be recreated, even if they already exist.
     """
     try:
         if os.path.isfile(dest) and (force or not os.path.islink(dest)):
@@ -32,9 +33,7 @@ def delete_and_link(source, dest, force=False):
 
 
 def install_folder(source, dest, force=False):
-    """Symlink all the dotfiles in the source to the dest
-       (if a symlink doesn't already exist)
-    """
+    """Symlink all the dotfiles in the source to the dest."""
     for f in os.listdir(source):
         logging.info("Installing symlinks for {}".format(f))
         delete_and_link(os.path.join(source, f),
