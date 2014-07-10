@@ -31,7 +31,7 @@ INSTALL_PATHS = {
     "sublimetext": ST3_LOC
 }
 
-# Constants related to packages to be installed.
+# Constants related to packages to be installed. Currently Ubuntu only.
 PACKAGE_MANAGER_SUDO = ["sudo"]
 PACKAGE_MANAGER_ADD_REPO = ["add-apt-repository"]
 PACKAGE_MANAGER_UPDATE = ["apt-get", "update"]
