@@ -21,8 +21,14 @@ ST3_LOC = os.path.join(HOME_DIR,
                        "sublime-text-3",
                        "Packages",
                        "User")
-# Folders in the repository which have dotfiles installed to the home directory.
-DOT_INSTALL_TO_HOME_FOLDERS = ["git", "vim"]
+
+# Install paths for everything. The key is a folder in this repository, and
+# the value is the place where the files in the folder should be installed.
+INSTALL_PATHS = {
+    "git": HOME_DIR,
+    "vim": HOME_DIR,
+    "sublimetext": ST3_LOC
+}
 
 
 # FUNCTIONS
@@ -73,15 +79,11 @@ def main():
     if args.verbose:
         logging.basicConfig(level=logging.DEBUG)
 
-    # Install dotfiles that symlink to home.
-    for folder in DOT_INSTALL_TO_HOME_FOLDERS:
-        install_folder(os.path.join(os.getcwd(), folder),
-                       HOME_DIR,
+    # Install all paths.
+    for source in INSTALL_PATHS:
+        install_folder(os.path.join(os.getcwd(), source),
+                       INSTALL_PATHS[source],
                        args.force)
-    # Install Sublime Text 3
-    install_folder(os.path.join(os.getcwd(), "sublimetext"),
-                   ST3_LOC,
-                   args.force)
 
 
 if __name__ == '__main__':
