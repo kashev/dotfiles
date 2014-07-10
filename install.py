@@ -3,15 +3,29 @@
 # Kashev Dalmia | @kashev | kashev.dalmia@gmail.com
 # install.py
 
+# IMPORTS
 import argparse
 import getpass
 import logging
 import os
 
+
+# CONSTANTS
+
 HOME_DIR = os.path.join("/home", getpass.getuser())
 
-DOT_INSTALL_FOLDERS = ["git", "vim"]
+# ST3 Location as installed through this PPA:
+# http://www.webupd8.org/2013/07/sublime-text-3-ubuntu-ppa-now-available.html
+ST3_LOC = os.path.join(HOME_DIR,
+                       ".config",
+                       "sublime-text-3",
+                       "Packages",
+                       "User")
+# Folders in the repository which have dotfiles installed to the home directory.
+DOT_INSTALL_TO_HOME_FOLDERS = ["git", "vim"]
 
+
+# FUNCTIONS
 
 def delete_and_link(source, dest, force=False):
     """Delete the destination file if it exists and isn't a link, then create
@@ -34,35 +48,18 @@ def delete_and_link(source, dest, force=False):
 
 def install_folder(source, dest, force=False):
     """Symlink all the dotfiles in the source to the dest."""
+    logging.info("Installing symlinks for {}".format(os.path.basename(source)))
     for f in os.listdir(source):
-        logging.info("Installing symlinks for {}".format(f))
         delete_and_link(os.path.join(source, f),
                         os.path.join(dest, f),
                         force)
-
-
-def install_sublime():
-    """Install Sublime Text 3 settings assuming it is installed through
-       this PPA:
-    http://www.webupd8.org/2013/07/sublime-text-3-ubuntu-ppa-now-available.html
-    """
-    ST3_LOC = os.path.join(HOME_DIR,
-                           ".config",
-                           "sublime-text-3",
-                           "Packages",
-                           "User")
-
-    logging.info("Installing Sublime Text 3 settings to {}".format(ST3_LOC))
-    install_folder(os.path.join(os.getcwd(), "sublimetext"),
-                   ST3_LOC)
-    logging.info("Done.")
 
 
 def main():
     """Parse command line arguments, then do all the installs."""
     parser = argparse.ArgumentParser(
         description="Install dotfiles and settings from "
-                    "github.com/kashev/dotfiles.")
+                    "http://github.com/kashev/dotfiles")
 
     parser.add_argument("-f", "--force",
                         help="force creation of new symlinks",
@@ -76,12 +73,15 @@ def main():
     if args.verbose:
         logging.basicConfig(level=logging.DEBUG)
 
-    for folder in DOT_INSTALL_FOLDERS:
+    # Install dotfiles that symlink to home.
+    for folder in DOT_INSTALL_TO_HOME_FOLDERS:
         install_folder(os.path.join(os.getcwd(), folder),
                        HOME_DIR,
                        args.force)
-
-    install_sublime()
+    # Install Sublime Text 3
+    install_folder(os.path.join(os.getcwd(), "sublimetext"),
+                   ST3_LOC,
+                   args.force)
 
 
 if __name__ == '__main__':
