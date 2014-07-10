@@ -29,6 +29,8 @@
 	ca = commit -a
 	cm = commit -m
 	cam = commit -am
+	cum = "!git add -A; git commit -m"
+	cuam = "!git add -A; git commit -am"
 	cd = commit --amend
 	cad = commit -a --amend
 	#############
