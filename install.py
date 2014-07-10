@@ -42,12 +42,14 @@ PACKAGES_TO_INSTALL = ["vim", "git", "sublime-text-installer"]
 
 # FUNCTIONS
 
-def install_exernal_dependencies():
+def install_linux_packages():
     subprocess.call(PACKAGE_MANAGER_SUDO +
                     PACKAGE_MANAGER_ADD_REPO +
                     REPOSITORIES_TO_ADD)
+
     subprocess.call(PACKAGE_MANAGER_SUDO +
                     PACKAGE_MANAGER_UPDATE)
+
     subprocess.call(PACKAGE_MANAGER_SUDO +
                     PACKAGE_MANAGER_INSTALL +
                     PACKAGES_TO_INSTALL)
@@ -100,7 +102,7 @@ def main():
         logging.basicConfig(level=logging.DEBUG)
 
     # Install external dependencies.
-    install_exernal_dependencies()
+    install_linux_packages()
 
     # Install all paths.
     for source in INSTALL_PATHS:
