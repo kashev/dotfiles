@@ -3,6 +3,7 @@
 # config.yaml
 #
 # The configuration fils for install.py.
+
 paths:
   git: "~"
   vim: "~"

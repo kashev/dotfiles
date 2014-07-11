@@ -29,7 +29,7 @@ def validate_files():
         entire project, including this script.
     """
     logging.info("Validating projet...")
-
+    retval = True
     # pep8 this script for style.
     logging.info("Validating {}".format(__file__))
     pep8style = pep8.StyleGuide(quiet=True)
@@ -39,20 +39,37 @@ def validate_files():
                         .format(__file__, pep8result.total_errors))
         pep8result.print_statistics()
 
-    # Check that the configuration file exists and is valid yaml.
+    # Check that the configuration file exists and is both valid yaml and
+    # contains the information necessary to run the installer.
     logging.info("Validating {}".format(CONFIG_FILE))
     try:
         with open(CONFIG_FILE, 'r') as f:
             data = f.read()
-            yaml.load(data)
+            configs = yaml.load(data)
+
+            paths = configs['paths']
+
+            for source in paths:
+                src_path = os.path.join(os.getcwd(), source)
+                if not (os.path.exists(src_path) and os.path.isdir(src_path)):
+                    logging.critical("Config path {} must also have a "
+                                     "config directory.".format(source))
+
     except IOError as e:
         logging.critical('Problem opening {}:\n{}'
                          .format(CONFIG_FILE, e))
+        retval = False
     except yaml.parser.ParserError as e:
         logging.critical("{} is not a valid .yaml file:\n{}"
                          .format(CONFIG_FILE, e))
+        retval = False
+    except KeyError as e:
+        logging.critical("{} does not contain the proper "
+                         "configuration data:\n{}".format(CONFIG_FILE, e))
+        retval = False
 
     logging.info("Done.")
+    return retval
 
 
 def delete_and_link(source, dest, force=False):
@@ -106,9 +123,9 @@ def main():
 
     # TODO: Check and install external dependencies in a portable way.
 
-    # Validate Files : if the -c flag is passed, don't continue past this step.
-    validate_files()
-    if args.check:
+    # Validate Files: if the -c flag is passed, don't continue past this step.
+    valid = validate_files()
+    if args.check or not valid:
         exit(0)
 
     # Load config file.
