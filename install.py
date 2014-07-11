@@ -9,8 +9,8 @@
 import argparse
 import logging
 import os
+import pep8
 import yaml
-
 
 # CONSTANTS
 CONFIG_FILE = "config.yaml"
@@ -18,10 +18,27 @@ CONFIG_FILE = "config.yaml"
 
 # FUNCTIONS
 
+def validate_files():
+    """ Validate and syntax check all the files it is possible to check in the
+        entire project, including this script.
+    """
+    logging.info("Validating projet...")
+
+    # pep8 this script for style.
+    logging.info("Validating {}".format(__file__))
+    pep8style = pep8.StyleGuide(quiet=True)
+    pep8result = pep8style.check_files([os.path.realpath(__file__)])
+    if pep8result.total_errors != 0:
+        logging.warning(" {} does not conform to pep8 with {} errors.\n"
+                        .format(__file__, pep8result.total_errors))
+        pep8result.print_statistics()
+
+    logging.info("Done.")
+
 
 def delete_and_link(source, dest, force=False):
-    """Delete the destination file if it exists and isn't a link, then create
-       a link to the destination from the source. The force option causes
+    """ Delete the destination file if it exists and isn't a link, then create
+        a link to the destination from the source. The force option causes
         symlinks to be recreated, even if they already exist.
     """
     try:
@@ -39,7 +56,7 @@ def delete_and_link(source, dest, force=False):
 
 
 def install_folder(source, dest, force=False):
-    """Symlink all the dotfiles in the source to the dest."""
+    """ Symlink all the dotfiles in the source to the dest. """
     logging.info("Installing symlinks for {}".format(os.path.basename(source)))
     for f in os.listdir(source):
         delete_and_link(os.path.join(source, f),
@@ -48,7 +65,7 @@ def install_folder(source, dest, force=False):
 
 
 def main():
-    """Parse command line arguments, then do all the installs."""
+    """ Parse command line arguments, then do all the installs. """
     parser = argparse.ArgumentParser(
         description="Install dotfiles and settings from "
                     "http://github.com/kashev/dotfiles")
@@ -59,6 +76,9 @@ def main():
     parser.add_argument("-v", "--verbose",
                         help="increase output verbosity",
                         action="store_true")
+    parser.add_argument("-c", "--check", "--validate",
+                        help="only validate, don't install",
+                        action="store_true")
 
     args = parser.parse_args()
 
@@ -66,6 +86,11 @@ def main():
         logging.basicConfig(level=logging.DEBUG)
 
     # TODO: Check and install external dependencies in a portable way.
+
+    # Validate Files
+    validate_files()
+    if args.check:
+        exit(0)
 
     # Load config file.
     with open(CONFIG_FILE, 'r') as f:
