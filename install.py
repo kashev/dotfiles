@@ -5,18 +5,14 @@
 
 # IMPORTS
 import argparse
-import getpass
 import logging
 import os
 
 
 # CONSTANTS
-
-HOME_DIR = os.path.join("/home", getpass.getuser())
-
 # ST3 Location as installed through this PPA:
 # http://www.webupd8.org/2013/07/sublime-text-3-ubuntu-ppa-now-available.html
-ST3_LOC = os.path.join(HOME_DIR,
+ST3_LOC = os.path.join("~",
                        ".config",
                        "sublime-text-3",
                        "Packages",
@@ -25,8 +21,8 @@ ST3_LOC = os.path.join(HOME_DIR,
 # Install paths for everything. The key is a folder in this repository, and
 # the value is the place where the files in the folder should be installed.
 INSTALL_PATHS = {
-    "git": HOME_DIR,
-    "vim": HOME_DIR,
+    "git": "~",
+    "vim": "~",
     "sublimetext": ST3_LOC
 }
 
@@ -84,7 +80,7 @@ def main():
     # Install all paths.
     for source in INSTALL_PATHS:
         install_folder(os.path.join(os.getcwd(), source),
-                       INSTALL_PATHS[source],
+                       os.path.expanduser(INSTALL_PATHS[source]),
                        args.force)
 
 
