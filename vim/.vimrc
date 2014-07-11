@@ -5,4 +5,3 @@ set expandtab     " Tabs are spaces.
 set shiftwidth=4  " When I indent, it's 4 spaces.
 set number        " Show line numbers.
 set ruler         " Show cursor position.
-set title         " Set the terminal's title
