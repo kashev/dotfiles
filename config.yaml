@@ -1,0 +1,11 @@
+# dotfiles
+# Kashev Dalmia | @kashev | kashev.dalmia@gmail.com
+# config.yaml
+#
+# The configuration fils for install.py.
+paths:
+  git: "~"
+  vim: "~"
+  # ST3 Location as installed through this PPA:
+  # http://www.webupd8.org/2013/07/sublime-text-3-ubuntu-ppa-now-available.html
+  sublimetext: "~/.config/sublime-text-3/Packages/User"

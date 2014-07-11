@@ -2,25 +2,18 @@
 # dotfiles
 # Kashev Dalmia | @kashev | kashev.dalmia@gmail.com
 # install.py
+#
+# The dotfiles installer script.
 
 # IMPORTS
 import argparse
 import logging
 import os
+import yaml
 
 
 # CONSTANTS
-# ST3 Location as installed through this PPA:
-# http://www.webupd8.org/2013/07/sublime-text-3-ubuntu-ppa-now-available.html
-ST3_LOC = os.path.join("~", ".config", "sublime-text-3", "Packages", "User")
-
-# Install paths for everything. The key is a folder in this repository, and
-# the value is the place where the files in the folder should be installed.
-INSTALL_PATHS = {
-    "git": "~",
-    "vim": "~",
-    "sublimetext": ST3_LOC
-}
+CONFIG_FILE = "config.yaml"
 
 
 # FUNCTIONS
@@ -74,10 +67,16 @@ def main():
 
     # TODO: Check and install external dependencies in a portable way.
 
+    # Load config file.
+    with open(CONFIG_FILE, 'r') as f:
+        data = f.read()
+        configs = yaml.load(data)
+
     # Install all paths.
-    for source in INSTALL_PATHS:
+    paths = configs['paths']
+    for source in paths:
         install_folder(os.path.join(os.getcwd(), source),
-                       os.path.expanduser(INSTALL_PATHS[source]),
+                       os.path.expanduser(paths[source]),
                        args.force)
 
 
