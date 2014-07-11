@@ -31,29 +31,7 @@ INSTALL_PATHS = {
     "sublimetext": ST3_LOC
 }
 
-# Constants related to packages to be installed. Currently Ubuntu only.
-PACKAGE_MANAGER_SUDO = ["sudo"]
-PACKAGE_MANAGER_ADD_REPO = ["add-apt-repository"]
-PACKAGE_MANAGER_UPDATE = ["apt-get", "update"]
-PACKAGE_MANAGER_INSTALL = ["apt-get", "install"]
-REPOSITORIES_TO_ADD = ["ppa:webupd8team/sublime-text-3"]
-PACKAGES_TO_INSTALL = ["vim", "git", "sublime-text-installer"]
-
-
 # FUNCTIONS
-
-def install_linux_packages():
-    subprocess.call(PACKAGE_MANAGER_SUDO +
-                    PACKAGE_MANAGER_ADD_REPO +
-                    REPOSITORIES_TO_ADD)
-
-    subprocess.call(PACKAGE_MANAGER_SUDO +
-                    PACKAGE_MANAGER_UPDATE)
-
-    subprocess.call(PACKAGE_MANAGER_SUDO +
-                    PACKAGE_MANAGER_INSTALL +
-                    PACKAGES_TO_INSTALL)
-
 
 def delete_and_link(source, dest, force=False):
     """Delete the destination file if it exists and isn't a link, then create
@@ -101,8 +79,7 @@ def main():
     if args.verbose:
         logging.basicConfig(level=logging.DEBUG)
 
-    # Install external dependencies.
-    install_linux_packages()
+    # TODO: Check and install external dependencies in a portable way.
 
     # Install all paths.
     for source in INSTALL_PATHS:
