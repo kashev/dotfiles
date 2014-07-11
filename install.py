@@ -5,12 +5,18 @@
 #
 # The dotfiles installer script.
 
+# FUTURE IMPORTS
+from __future__ import division
+from __future__ import print_function
+from __future__ import unicode_literals
+
 # IMPORTS
 import argparse
 import logging
 import os
 import pep8
 import yaml
+
 
 # CONSTANTS
 CONFIG_FILE = "config.yaml"
@@ -33,16 +39,17 @@ def validate_files():
                         .format(__file__, pep8result.total_errors))
         pep8result.print_statistics()
 
-    logging.info("Validating {}.".format(CONFIG_FILE))
+    # Check that the configuration file exists and is valid yaml.
+    logging.info("Validating {}".format(CONFIG_FILE))
     try:
         with open(CONFIG_FILE, 'r') as f:
             data = f.read()
             yaml.load(data)
-    except yaml.parser.ParserError as e:
-        logging.critical("{} is not a valid .yaml file:\n{}"
-                         .format(CONFIG_FILE, e))
     except IOError as e:
         logging.critical('Problem opening {}:\n{}'
+                         .format(CONFIG_FILE, e))
+    except yaml.parser.ParserError as e:
+        logging.critical("{} is not a valid .yaml file:\n{}"
                          .format(CONFIG_FILE, e))
 
     logging.info("Done.")
