@@ -8,7 +8,6 @@ import argparse
 import getpass
 import logging
 import os
-import subprocess
 
 
 # CONSTANTS
@@ -32,6 +31,7 @@ INSTALL_PATHS = {
 }
 
 # FUNCTIONS
+
 
 def delete_and_link(source, dest, force=False):
     """Delete the destination file if it exists and isn't a link, then create
