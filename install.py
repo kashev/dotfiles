@@ -24,6 +24,38 @@ CONFIG_FILE = "config.yaml"
 
 # FUNCTIONS
 
+def validate_config_file(config_file):
+    # Check that the configuration file exists and is both valid yaml and
+    # contains the information necessary to run the installer.
+    logging.info("Validating {}".format(config_file))
+    retval = True
+    try:
+        with open(config_file, 'r') as f:
+            data = f.read()
+            configs = yaml.load(data)
+
+            paths = configs['paths']
+            for source in paths:
+                if not os.path.isdir(os.path.join(os.getcwd(), source)):
+                    logging.critical("Config path {} must also have a "
+                                     "config directory.".format(source))
+
+    except IOError as e:
+        logging.critical('Problem opening {}:\n{}'
+                         .format(config_file, e))
+        retval = False
+    except yaml.parser.ParserError as e:
+        logging.critical("{} is not a valid .yaml file:\n{}"
+                         .format(config_file, e))
+        retval = False
+    except KeyError as e:
+        logging.critical("{} does not contain the proper "
+                         "configuration data:\n{}".format(config_file, e))
+        retval = False
+
+    return retval
+
+
 def validate_files():
     """ Validate and syntax check all the files it is possible to check in the
         entire project, including this script.
@@ -39,34 +71,7 @@ def validate_files():
                         .format(__file__, pep8result.total_errors))
         pep8result.print_statistics()
 
-    # Check that the configuration file exists and is both valid yaml and
-    # contains the information necessary to run the installer.
-    logging.info("Validating {}".format(CONFIG_FILE))
-    try:
-        with open(CONFIG_FILE, 'r') as f:
-            data = f.read()
-            configs = yaml.load(data)
-
-            paths = configs['paths']
-
-            for source in paths:
-                src_path = os.path.join(os.getcwd(), source)
-                if not (os.path.exists(src_path) and os.path.isdir(src_path)):
-                    logging.critical("Config path {} must also have a "
-                                     "config directory.".format(source))
-
-    except IOError as e:
-        logging.critical('Problem opening {}:\n{}'
-                         .format(CONFIG_FILE, e))
-        retval = False
-    except yaml.parser.ParserError as e:
-        logging.critical("{} is not a valid .yaml file:\n{}"
-                         .format(CONFIG_FILE, e))
-        retval = False
-    except KeyError as e:
-        logging.critical("{} does not contain the proper "
-                         "configuration data:\n{}".format(CONFIG_FILE, e))
-        retval = False
+    retval &= validate_config_file(CONFIG_FILE)
 
     logging.info("Done.")
     return retval
