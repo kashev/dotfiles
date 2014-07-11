@@ -29,9 +29,21 @@ def validate_files():
     pep8style = pep8.StyleGuide(quiet=True)
     pep8result = pep8style.check_files([os.path.realpath(__file__)])
     if pep8result.total_errors != 0:
-        logging.warning(" {} does not conform to pep8 with {} errors.\n"
+        logging.warning("{} does not conform to pep8 with {} errors."
                         .format(__file__, pep8result.total_errors))
         pep8result.print_statistics()
+
+    logging.info("Validating {}.".format(CONFIG_FILE))
+    try:
+        with open(CONFIG_FILE, 'r') as f:
+            data = f.read()
+            yaml.load(data)
+    except yaml.parser.ParserError as e:
+        logging.critical("{} is not a valid .yaml file:\n{}"
+                         .format(CONFIG_FILE, e))
+    except IOError as e:
+        logging.critical('Problem opening {}:\n{}'
+                         .format(CONFIG_FILE, e))
 
     logging.info("Done.")
 
