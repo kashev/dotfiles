@@ -87,7 +87,7 @@ def main():
 
     # TODO: Check and install external dependencies in a portable way.
 
-    # Validate Files
+    # Validate Files : if the -c flag is passed, don't continue past this step.
     validate_files()
     if args.check:
         exit(0)
