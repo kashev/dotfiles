@@ -15,6 +15,7 @@ import argparse
 import logging
 import os
 import pep8
+import sys
 import yaml
 
 
@@ -131,7 +132,7 @@ def main():
     # Validate Files: if the -c flag is passed, don't continue past this step.
     valid = validate_files()
     if args.check or not valid:
-        exit(0)
+        sys.exit(not valid)  # exit code of zero or false indicates no error.
 
     # Load config file.
     with open(CONFIG_FILE, 'r') as f:
