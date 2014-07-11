@@ -12,11 +12,7 @@ import os
 # CONSTANTS
 # ST3 Location as installed through this PPA:
 # http://www.webupd8.org/2013/07/sublime-text-3-ubuntu-ppa-now-available.html
-ST3_LOC = os.path.join("~",
-                       ".config",
-                       "sublime-text-3",
-                       "Packages",
-                       "User")
+ST3_LOC = os.path.join("~", ".config", "sublime-text-3", "Packages", "User")
 
 # Install paths for everything. The key is a folder in this repository, and
 # the value is the place where the files in the folder should be installed.
@@ -25,6 +21,7 @@ INSTALL_PATHS = {
     "vim": "~",
     "sublimetext": ST3_LOC
 }
+
 
 # FUNCTIONS
 
