@@ -4,6 +4,7 @@
 #
 # The configuration file for install.py.
 
+# Paths to install settings folders to.
 paths:
   git: "~"
   vim: "~"
@@ -12,8 +13,12 @@ paths:
   # http://www.webupd8.org/2013/07/sublime-text-3-ubuntu-ppa-now-available.html
   sublimetext: "~/.config/sublime-text-3/Packages/User"
 
+
+# External dependencies to install
 to_install:
+  # Packages to install using the system package manager.
   linux:
+    # Development, shell, etc.
     - "git"
     - "vim"
     - "zsh"
@@ -21,6 +26,18 @@ to_install:
     - "python"
     - "python-pip"
     - "bpython" # https://github.com/bpython/bpython
+    # Gnome Related Packages
+    - "gnome-shell"
+    - "gconf-editor"
+    # Media and Web
+    - "google-chrome"
+    - "vlc"
+
+  # Packages to install on Ubuntu only.
+  ubuntu:
+    - "ubuntu-gnome-desktop"
+
+  # Packages to install using pip.
   pip:
     - "pep8"
     - "pyyaml"
