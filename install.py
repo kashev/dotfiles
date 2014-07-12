@@ -14,9 +14,19 @@ from __future__ import unicode_literals
 import argparse
 import logging
 import os
-import pep8
 import sys
-import yaml
+# As this script is meant to be installed on a fresh installation, non default
+# imports are in a try-except block to cleanly handle uninstalled dependencies.
+try:
+    import pep8
+    import yaml
+except ImportError as e:
+    logging.critical("Missing dependency: {}. "
+                     "Run 'sudo pip install pep8 pyyaml' or install the "
+                     "packages 'pep8' and 'python-yaml' with your system "
+                     "package manager."
+                     .format(e))
+    sys.exit(1)
 
 
 # CONSTANTS
