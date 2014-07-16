@@ -42,3 +42,6 @@ to_install:
   pip:
     - "pep8"
     - "pyyaml"
+
+settings:
+  shell: "/bin/zsh"

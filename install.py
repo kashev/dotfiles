@@ -16,6 +16,7 @@ import argparse
 import logging
 import os
 import shutil
+import subprocess
 import sys
 # As this script is meant to be installed on a fresh installation, non default
 # imports are in a try-except block to cleanly handle uninstalled dependencies.
@@ -70,6 +71,9 @@ def validate_config_file(config_file):
                 if not os.path.isdir(os.path.join(os.getcwd(), source)):
                     logging.critical("Config path {} must also have a "
                                      "config directory.".format(source))
+
+            # Check for keys by simply referecing them.
+            configs['settings']
 
     except IOError as e:
         logging.critical('Problem opening {}:\n{}'
@@ -174,6 +178,15 @@ def main():
                        os.path.expanduser(paths[source]),
                        args.force)
 
+    # Change system settings.
+    settings = configs['settings']
+    for setting in settings:
+        if setting == "shell":
+            shell = settings[setting]
+            if shell != os.environ['SHELL']:
+                logging.info("Changing default shell to '{}'.".format(shell))
+                print("Type your password for 'chsh' : ", end="")
+                subprocess.call(["chsh", "-s " + shell])
 
 if __name__ == '__main__':
     main()
