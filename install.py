@@ -188,6 +188,7 @@ def main():
                 print("Type your password for 'chsh' : ", end="")
                 subprocess.call(["chsh", "-s " + shell])
 
+    print("Log in and log back out to apply all changes.")
 
 if __name__ == '__main__':
     main()
