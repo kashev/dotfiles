@@ -115,7 +115,7 @@ def delete_and_link(source, dest, force=False):
     try:
         if os.path.lexists(dest) and (force or not os.path.islink(dest)):
             logging.info("Deleting existing {}".format(dest))
-            if os.path.isfile(dest):
+            if os.path.isfile(dest) or os.path.islink(dest):
                 os.remove(dest)
             elif os.path.isdir(dest):
                 shutil.rmtree(dest)
