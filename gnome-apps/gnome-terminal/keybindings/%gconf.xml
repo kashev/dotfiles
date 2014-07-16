@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<gconf>
+	<entry name="set_window_title" mtime="1405144600" type="string">
+		<stringvalue>&lt;Primary&gt;e</stringvalue>
+	</entry>
+</gconf>

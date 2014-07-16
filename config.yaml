@@ -9,6 +9,7 @@ paths:
   git: "~"
   vim: "~"
   zsh: "~"
+  gnome-apps: "~/.gconf/apps"
   # ST3 Location as installed through this PPA:
   # http://www.webupd8.org/2013/07/sublime-text-3-ubuntu-ppa-now-available.html
   sublimetext: "~/.config/sublime-text-3/Packages/User"
