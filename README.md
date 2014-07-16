@@ -17,7 +17,7 @@ Run `python install.py` from inside of `/dotfiles` to create all necessary symli
 Thanks to all the projects that make this project possible.
 - [git](http://git-scm.com/)
 - [gnome](http://www.gnome.org/)
-- [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
+- [oh-my-zsh](http://ohmyz.sh/)
 - [python](https://www.python.org/)
 - [Sublime Text](http://www.sublimetext.com/)
 - [vim](http://www.vim.org/)
