@@ -109,6 +109,10 @@ def validate_files():
     return retval
 
 
+def clone_submodules():
+    subprocess.call(["git", "submodule", "update", "--init", "--recursive"])
+
+
 def delete_and_link(source, dest, force=False):
     """ Delete the destination file if it exists and isn't a link, then create
         a link to the destination from the source. The force option causes
@@ -172,6 +176,9 @@ def main():
     valid = validate_files()
     if args.check or not valid:
         sys.exit(not valid)  # exit code of zero or false indicates no error.
+
+    # The rest of the script expects submodules to be cloned and present.
+    clone_submodules()
 
     # Load config file.
     with open(CONFIG_FILE, 'r') as f:
