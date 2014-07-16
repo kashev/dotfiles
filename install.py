@@ -58,7 +58,8 @@ def check_pep8(*files):
 
 def validate_config_file(config_file):
     # Check that the configuration file exists and is both valid yaml and
-    # contains the information necessary to run the installer.
+    # contains the information necessary to run the installer. Check for
+    # existance of necessary keys by simply referecing them.
     logging.info("Validating {}...".format(config_file))
     retval = True
     try:
@@ -71,9 +72,10 @@ def validate_config_file(config_file):
                 if not os.path.isdir(os.path.join(os.getcwd(), source)):
                     logging.critical("Config path {} must also have a "
                                      "config directory.".format(source))
+                paths[source]['dot']
+                paths[source]['path']
 
-            # Check for keys by simply referecing them.
-            configs['settings']
+            configs["settings"]
 
     except IOError as e:
         logging.critical('Problem opening {}:\n{}'
@@ -129,12 +131,15 @@ def delete_and_link(source, dest, force=False):
                          .format(source, dest, e))
 
 
-def install_folder(source, dest, force=False):
-    """ Symlink all the dotfiles in the source to the dest. """
+def install_folder(source, dest, force=False, prepend_dot=False):
+    """ Symlink all the dotfiles in the source to the dest. The force option
+        is passed to delete_and_link(). The prepend_dot option exists to
+        prepend a dot to the filename for copying."""
     logging.info("Installing symlinks for {}".format(os.path.basename(source)))
+    prepend = '.' if prepend_dot else ''
     for f in os.listdir(source):
         delete_and_link(os.path.join(source, f),
-                        os.path.join(dest, f),
+                        os.path.join(dest, prepend + f),
                         force)
 
 
@@ -159,6 +164,8 @@ def main():
     if args.verbose:
         logging.basicConfig(level=logging.DEBUG)
 
+    require_logout = False
+
     # TODO: Check and install external dependencies in a portable way.
 
     # Validate Files: if the -c flag is passed, don't continue past this step.
@@ -175,8 +182,9 @@ def main():
     paths = configs['paths']
     for source in paths:
         install_folder(os.path.join(os.getcwd(), source),
-                       os.path.expanduser(paths[source]),
-                       args.force)
+                       os.path.expanduser(paths[source]['path']),
+                       args.force,
+                       paths[source]['dot'])
 
     # Change system settings.
     settings = configs['settings']
@@ -187,8 +195,10 @@ def main():
                 logging.info("Changing default shell to '{}'.".format(shell))
                 print("Type your password for 'chsh' : ", end="")
                 subprocess.call(["chsh", "-s " + shell])
+                require_logout = True
 
-    print("Log in and log back out to apply all changes.")
+    if require_logout:
+        print("Log in and log back out to apply all changes.")
 
 if __name__ == '__main__':
     main()
