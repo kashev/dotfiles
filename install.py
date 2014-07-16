@@ -109,8 +109,13 @@ def validate_files():
     return retval
 
 
-def clone_submodules():
-    subprocess.call(["git", "submodule", "update", "--init", "--recursive"])
+def clone_submodules(output=False):
+    logging.info("Cloning all submodules...")
+    output_text = subprocess.check_output(["git", "submodule", "update",
+                                           "--init", "--recursive"])
+    if output:
+        print(output_text, end='')
+    logging.info("Done.")
 
 
 def delete_and_link(source, dest, force=False):
@@ -178,7 +183,7 @@ def main():
         sys.exit(not valid)  # exit code of zero or false indicates no error.
 
     # The rest of the script expects submodules to be cloned and present.
-    clone_submodules()
+    clone_submodules(args.verbose)
 
     # Load config file.
     with open(CONFIG_FILE, 'r') as f:
