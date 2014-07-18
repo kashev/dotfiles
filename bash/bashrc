@@ -1,0 +1,4 @@
+# we're using zsh, but on systems where chsh won't work (like ldap managed),
+# this is an easy way to make sure zsh is the 'default login shell'.
+
+exec zsh

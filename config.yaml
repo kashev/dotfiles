@@ -15,6 +15,9 @@ paths:
   zsh:
     path: "~"
     dot: true
+  bash:
+    path: "~"
+    dot: true
   gnome-apps:
     path: "~/.gconf/apps"
     dot: false
