@@ -109,6 +109,23 @@ def validate_files():
     return retval
 
 
+def change_login_shell(shell):
+    """ Change the default login shell using chsh. Returns True only if a
+        change was made and a log-in/log-out may be required.
+    """
+    if shell != os.environ['SHELL']:
+        try:
+            logging.info("Changing default shell to '{}'.".format(shell))
+            print("Type your password for 'chsh' : ", end="")
+            subprocess.check_call(["chsh", "-s " + shell])
+            return True
+        except subprocess.CalledProcessError as e:
+            logging.warning("Could not change login shell: {}".format(e))
+            return False
+    else:
+        return False
+
+
 def clone_submodules(output=False):
     logging.info("Cloning all submodules...")
     output_text = subprocess.check_output(["git", "submodule", "update",
@@ -199,15 +216,12 @@ def main():
                        paths[source]['dot'])
 
     # Change system settings.
+    require_logout = False
     settings = configs['settings']
     for setting in settings:
         if setting == "shell":
             shell = settings[setting]
-            if shell != os.environ['SHELL']:
-                logging.info("Changing default shell to '{}'.".format(shell))
-                print("Type your password for 'chsh' : ", end="")
-                subprocess.call(["chsh", "-s " + shell])
-                require_logout = True
+            require_logout |= change_login_shell(shell)
 
     if require_logout:
         print("Log in and log back out to apply all changes.")
