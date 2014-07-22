@@ -38,3 +38,4 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 ###########
 alias bpy="bpython"  # http://bpython-interpreter.org/
 alias gits="git s"   # git s is defined in .gitconfig
+alias pwdp="pwd -P"  # print working directory w/o symlinks
