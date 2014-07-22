@@ -37,5 +37,8 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Aliases #
 ###########
 alias bpy="bpython"  # http://bpython-interpreter.org/
-alias gits="git s"   # git s is defined in .gitconfig
 alias pwdp="pwd -P"  # print working directory w/o symlinks
+
+# Git Aliases - Mostly for Typo Mitigation
+alias gits="git s"   # git s is defined in .gitconfig
+alias gitd="git d"   # git d is defined in .gitconfig
