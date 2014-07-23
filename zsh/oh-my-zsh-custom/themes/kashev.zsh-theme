@@ -28,11 +28,11 @@ eval PR_BOLD="%{$terminfo[bold]%}"
 if [[ $UID -ne 0 ]]; then # normal user
   eval PR_USER='${PR_GREEN}%n${PR_NO_COLOR}'
   eval PR_USER_OP='${PR_GREEN}%#${PR_NO_COLOR}'
-  local PR_PROMPT='$PR_NO_COLOR➤⚡ $PR_NO_COLOR'
+  local PR_PROMPT='$PR_NO_COLOR➤⚡$PR_NO_COLOR'
 else # root
   eval PR_USER='${PR_RED}%n${PR_NO_COLOR}'
   eval PR_USER_OP='${PR_RED}%#${PR_NO_COLOR}'
-  local PR_PROMPT='$PR_RED➤⚡ $PR_NO_COLOR'
+  local PR_PROMPT='$PR_RED➤⚡$PR_NO_COLOR'
 fi
 
 # Check if we are on SSH or not
@@ -56,10 +56,6 @@ elif which rbenv &> /dev/null; then # detect Simple Ruby Version management
 fi
 local git_branch='$(git_prompt_info)%{$PR_NO_COLOR%}'
 
-PROMPT="╭─${user_host} ${current_dir} ${rvm_ruby} ${git_branch}
-╰─$PR_PROMPT "
-RPS1="${return_code}"
-
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$PR_YELLOW%}‹"
 ZSH_THEME_GIT_PROMPT_SUFFIX="›%{$PR_NO_COLOR%} ●"
 
@@ -68,3 +64,9 @@ ZSH_THEME_SVN_PROMPT_PREFIX=$ZSH_THEME_GIT_PROMPT_PREFIX
 ZSH_THEME_SVN_PROMPT_SUFFIX=$ZSH_THEME_GIT_PROMPT_SUFFIX
 ZSH_THEME_SVN_PROMPT_DIRTY=$ZSH_THEME_GIT_PROMPT_DIRTY
 ZSH_THEME_SVN_PROMPT_CLEAN=$ZSH_THEME_GIT_PROMPT_CLEAN
+
+
+PROMPT="╭─${user_host} ${current_dir} ${rvm_ruby} ${git_branch}
+╰─$PR_PROMPT "
+RPS1="${return_code}"
+
