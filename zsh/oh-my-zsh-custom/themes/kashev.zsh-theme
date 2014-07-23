@@ -56,10 +56,15 @@ elif which rbenv &> /dev/null; then # detect Simple Ruby Version management
 fi
 local git_branch='$(git_prompt_info)%{$PR_NO_COLOR%}'
 
-#PROMPT="${user_host} ${current_dir} ${rvm_ruby} ${git_branch}$PR_PROMPT "
 PROMPT="╭─${user_host} ${current_dir} ${rvm_ruby} ${git_branch}
 ╰─$PR_PROMPT "
 RPS1="${return_code}"
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$PR_YELLOW%}‹"
-ZSH_THEME_GIT_PROMPT_SUFFIX="› ● %{$PR_NO_COLOR%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="›%{$PR_NO_COLOR%} ●"
+
+# Configure SVN information exactly like Git Configuration
+ZSH_THEME_SVN_PROMPT_PREFIX=$ZSH_THEME_GIT_PROMPT_PREFIX
+ZSH_THEME_SVN_PROMPT_SUFFIX=$ZSH_THEME_GIT_PROMPT_SUFFIX
+ZSH_THEME_SVN_PROMPT_DIRTY=$ZSH_THEME_GIT_PROMPT_DIRTY
+ZSH_THEME_SVN_PROMPT_CLEAN=$ZSH_THEME_GIT_PROMPT_CLEAN
