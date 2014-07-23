@@ -1,18 +1,25 @@
+# dotfiles
+# Kashev Dalmia | @kashev | kashev.dalmia@gmail.com
+
 #########
 # zshrc #
 #########
 
-# Path to your oh-my-zsh installation.
+###################################
+# oh-my-zsh Installation Location #
+###################################
 export ZSH=$HOME/.oh-my-zsh
+
+##################################
+# Custom oh-my-zsh-custom Folder #
+##################################
+ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
 
 ###########################
 # Other oh-my-zsh Options #
 ###########################
-ZSH_THEME="gnzh"
+ZSH_THEME="kashev"
 COMPLETION_WAITING_DOTS="true"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
 
 ##########################
 # Prep oh-my-zsh Plugins #

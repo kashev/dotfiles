@@ -12,15 +12,19 @@ paths:
   vim:
     path: "~"
     dot: true
+
+  # ZSH and Shell Options
   zsh:
     path: "~"
     dot: true
   bash:
     path: "~"
     dot: true
+
   gnome-apps:
     path: "~/.gconf/apps"
     dot: false
+
   # ST3 Location as installed through this PPA:
   # http://www.webupd8.org/2013/07/sublime-text-3-ubuntu-ppa-now-available.html
   sublimetext:
@@ -45,6 +49,7 @@ to_install:
     - "gnome-shell"
     # Media and Web
     - "vlc"
+    # TODO add LaTeX packages
 
   # Packages to install on Ubuntu only.
   ubuntu:
@@ -55,6 +60,7 @@ to_install:
   pip:
     - "pep8"
     - "pyyaml"
+
 
 settings:
   shell: "/bin/zsh"
