@@ -20,7 +20,7 @@ COMPLETION_WAITING_DOTS="true"
 ##########################
 # Prep oh-my-zsh Plugins #
 ##########################
-plugins=(git, web-search, wd, colored-man)
+plugins=(git web-search wd colored-man)
 
 ##################
 # Load oh-my-zsh #
