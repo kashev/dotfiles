@@ -5,13 +5,10 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
+###########################
+# Other oh-my-zsh Options #
+###########################
 ZSH_THEME="gnzh"
-
-# Display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
 # Would you like to use another custom folder than $ZSH/custom?
@@ -20,7 +17,13 @@ COMPLETION_WAITING_DOTS="true"
 ##########################
 # Prep oh-my-zsh Plugins #
 ##########################
-plugins=(git web-search wd colored-man)
+plugins=(
+    colored-man
+    git
+    sublime
+    wd
+    web-search
+)
 
 ##################
 # Load oh-my-zsh #
