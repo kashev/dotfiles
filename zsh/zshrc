@@ -23,6 +23,7 @@ plugins=(
     sublime
     wd
     web-search
+    zsh_reload
 )
 
 ##################
