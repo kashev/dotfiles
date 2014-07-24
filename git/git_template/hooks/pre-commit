@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # dotfiles
 # Kashev Dalmia | @kashev | kashev.dalmia@gmail.com
@@ -54,7 +54,7 @@ fi
 
 # Check for source files with no newline at end of file. Note that this
 # searches based on file suffix.
-suffixes=( "h" "c" "cc" "cpp" "py" "zsh" )
+suffixes=("h" "c" "cc" "cpp" "py" "zsh")
 search=""
 for i in "${suffixes[@]}"
 do
