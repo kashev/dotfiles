@@ -123,3 +123,5 @@
 	helper = cache
 [diff]
 	tool = meld
+[push]
+	default = simple
