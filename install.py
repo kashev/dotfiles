@@ -2,8 +2,8 @@
 # dotfiles
 # Kashev Dalmia | @kashev | kashev.dalmia@gmail.com
 # install.py
-#
-# The dotfiles installer script.
+
+""" The dotfiles installer script. """
 
 
 # FUTURE IMPORTS
@@ -39,7 +39,7 @@ CONFIG_FILE = "config.yaml"
 # FUNCTIONS
 
 def check_pep8(*files):
-    """Check that the files conform to pep8. Return True if they do."""
+    """ Check that the files conform to pep8. Return True if they do. """
     logging.info("Validating files for pep8 conformance...")
 
     flist = [f for f in files]
@@ -57,9 +57,10 @@ def check_pep8(*files):
 
 
 def validate_config_file(config_file):
-    # Check that the configuration file exists and is both valid yaml and
-    # contains the information necessary to run the installer. Check for
-    # existance of necessary keys by simply referecing them.
+    """ Check that the configuration file exists and is both valid yaml and
+        contains the information necessary to run the installer. Check for
+        existance of necessary keys by simply referecing them.
+    """
     logging.info("Validating {}...".format(config_file))
     retval = True
     try:
