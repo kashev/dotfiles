@@ -65,7 +65,7 @@ for file in `git diff --cached --name-only $against| grep -E '${search%?}'`; do
     eof=`tail -c 1 $file`
     if [ "$eof" != "" ]; then
         echo "$file: No newline at the end of file"
-        failed=yes
+        failed=true
     fi
 done
 
