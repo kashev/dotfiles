@@ -23,12 +23,12 @@ import sys
 try:
     import pep8
     import yaml
-except ImportError as e:
+except ImportError as err:
     logging.critical("Missing dependency: {}. "
                      "Run 'sudo pip install pep8 pyyaml' or install the "
                      "packages 'pep8' and 'python-yaml' with your system "
                      "package manager."
-                     .format(e))
+                     .format(err))
     sys.exit(1)
 
 
@@ -77,17 +77,17 @@ def validate_config_file(config_file):
 
             configs["settings"]
 
-    except IOError as e:
+    except IOError as err:
         logging.critical('Problem opening {}:\n{}'
-                         .format(config_file, e))
+                         .format(config_file, err))
         retval = False
-    except yaml.parser.ParserError as e:
+    except yaml.parser.ParserError as err:
         logging.critical("{} is not a valid .yaml file:\n{}"
-                         .format(config_file, e))
+                         .format(config_file, err))
         retval = False
-    except KeyError as e:
+    except KeyError as err:
         logging.critical("{} does not contain the proper "
-                         "configuration data:\n{}".format(config_file, e))
+                         "configuration data:\n{}".format(config_file, err))
         retval = False
 
     return retval
@@ -119,14 +119,15 @@ def change_login_shell(shell):
             print("Type your password for 'chsh' : ", end="")
             subprocess.check_call(["chsh", "-s " + shell])
             return True
-        except subprocess.CalledProcessError as e:
-            logging.warning("Could not change login shell: {}".format(e))
+        except subprocess.CalledProcessError as err:
+            logging.warning("Could not change login shell: {}".format(err))
             return False
     else:
         return False
 
 
 def clone_submodules(output=False):
+    """ Clones all git submodules in the project. """
     logging.info("Cloning all submodules...")
     output_text = subprocess.check_output(["git", "submodule", "update",
                                            "--init", "--recursive"])
@@ -152,9 +153,9 @@ def delete_and_link(source, dest, force=False):
             logging.info("Creating symlink {} to {}".format(source, dest))
             os.symlink(source, dest)
 
-    except Exception as e:
+    except Exception as err:
         logging.critical("Error Creating Symlink {} to {} : {}"
-                         .format(source, dest, e))
+                         .format(source, dest, err))
 
 
 def install_folder(source, dest, force=False, prepend_dot=False):
@@ -172,8 +173,8 @@ def install_folder(source, dest, force=False, prepend_dot=False):
 def main():
     """ Parse command line arguments, then do all the installs. """
     parser = argparse.ArgumentParser(
-        description="Install dotfiles and settings from "
-                    "http://github.com/kashev/dotfiles")
+        description=("Install dotfiles and settings from "
+                     "http://github.com/kashev/dotfiles"))
 
     parser.add_argument("-f", "--force",
                         help="force creation of new symlinks",
