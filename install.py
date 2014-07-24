@@ -228,5 +228,6 @@ def main():
     if require_logout:
         print("Log in and log back out to apply all changes.")
 
+
 if __name__ == '__main__':
     main()
