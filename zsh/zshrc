@@ -26,6 +26,7 @@ COMPLETION_WAITING_DOTS="true"
 ##########################
 plugins=(
     colored-man
+    command-not-found
     git
     sublime
     wd
@@ -52,4 +53,6 @@ alias pwdp="pwd -P"  # print working directory w/o symlinks
 
 # Git Aliases - Mostly for Typo Mitigation
 alias gits="git s"   # git s is defined in .gitconfig
+alias gs="g s"       # g is defined as git in the oh-my-zsh plugin. Clobbers
+                     # gs as ghostscript.
 alias gitd="git d"   # git d is defined in .gitconfig

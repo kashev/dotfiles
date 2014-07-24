@@ -38,6 +38,7 @@ to_install:
   linux:
     # Development, shell, essentials.
     - "git"
+    - "meld"  # for git difftool
     - "google-chrome"
     - "vim"
     - "zsh"
