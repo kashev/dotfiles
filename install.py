@@ -58,7 +58,7 @@ def check_pep8(*files):
 
 def validate_config_file(config_file):
     """ Check that the configuration file exists and is both valid yaml and
-        contains the information necessary to run the installer. Check for
+        contains the information necessary to run the installer. Checks for
         existance of necessary keys by simply referecing them.
     """
     logging.info("Validating {}...".format(config_file))
@@ -89,6 +89,10 @@ def validate_config_file(config_file):
     except KeyError as err:
         logging.critical("{} does not contain the proper "
                          "configuration data:\n{}".format(config_file, err))
+        retval = False
+    except yaml.scanner.ScannerError as err:
+        logging.critical("{} has an incorrect syntax: "
+                         "{}\n".format(config_file, err))
         retval = False
 
     return retval
