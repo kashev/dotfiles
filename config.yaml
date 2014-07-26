@@ -44,6 +44,7 @@ to_install:
     - "zsh"
     # Python related packages
     - "python"
+    - "python-dev"
     - "python-pip"
     - "bpython" # https://github.com/bpython/bpython
     # Gnome Related Packages
