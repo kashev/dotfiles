@@ -45,6 +45,9 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# Change History to not share incremental history between terminals.
+setopt append_history no_inc_append_history no_share_history
+
 ###########
 # Aliases #
 ###########
