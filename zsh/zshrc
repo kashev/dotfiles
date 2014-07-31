@@ -52,6 +52,9 @@ setopt append_history no_inc_append_history no_share_history
 # Thanks to http://nuclearsquid.com/writings/reporttime-in-zsh/
 REPORTTIME=10
 
+# Set a HOSTNAME variable, like in bash
+export HOSTNAME=`hostname`
+
 ###########
 # Aliases #
 ###########
