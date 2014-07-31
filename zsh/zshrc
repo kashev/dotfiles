@@ -48,6 +48,10 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Change History to not share incremental history between terminals.
 setopt append_history no_inc_append_history no_share_history
 
+# Report CPU usage for commands running longer than 10 seconds
+# Thanks to http://nuclearsquid.com/writings/reporttime-in-zsh/
+REPORTTIME=10
+
 ###########
 # Aliases #
 ###########
