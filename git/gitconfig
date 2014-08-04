@@ -24,6 +24,8 @@
 	dc = diff --cached
 	dk = diff --check
 	dck = diff --cached --check
+	dt = difftool
+	dtd = difftool --dir-diff
 	#############
 	c = commit
 	ca = commit -a
