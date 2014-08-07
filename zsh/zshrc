@@ -64,6 +64,9 @@ alias gs="g s"         # g is defined as git in the oh-my-zsh plugin. Clobbers
                        # gs as ghostscript.
 alias gitd="git d"     # git d is defined in .gitconfig
 
+# SVN Aliases - To Make SVN More Like Git
+alias svnlog="svn log | less"
+
 ##############################
 # Long Command Configuration #
 ##############################
