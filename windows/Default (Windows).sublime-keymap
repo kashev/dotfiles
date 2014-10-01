@@ -1,0 +1,11 @@
+[
+    /**
+     * Keybindings Stolen from Netbeans
+     */
+    // Delete Line - clobbers slurp_find_string
+    { "keys": ["ctrl+e"], "command": "run_macro_file", "args": {"file": "res://Packages/Default/Delete Line.sublime-macro"} },
+    // Open Header/Source from Source/Header - clobbers expand selection to tag.
+    { "keys": ["ctrl+shift+a"], "command": "switch_file", "args": {"extensions": ["cpp", "cxx", "cc", "c", "hpp", "hxx", "h", "ipp", "inl", "m", "mm"]} },
+    // Search in Selection
+    { "keys": ["ctrl+alt+f"], "command": "show_panel", "args": {"panel": "find", "reverse": false, "in_selection": true} },
+]
