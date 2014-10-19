@@ -1,7 +1,7 @@
 # dotfiles
 # Kashev Dalmia | @kashev | kashev.dalmia@gmail.com
 # config.yaml
-#
+
 # The configuration file for install.py.
 
 # Paths to install settings folders to.
@@ -30,39 +30,6 @@ paths:
   sublimetext:
     path: "~/.config/sublime-text-3/Packages/User"
     dot: false
-
-
-# External dependencies to install
-to_install:
-  # Packages to install using the system package manager.
-  linux:
-    # Development, shell, essentials.
-    - "git"
-    - "meld"  # for git difftool
-    - "google-chrome"
-    - "vim"
-    - "zsh"
-    # Python related packages
-    - "python"
-    - "python-dev"
-    - "python-pip"
-    - "bpython" # https://github.com/bpython/bpython
-    # Gnome Related Packages
-    - "gnome-shell"
-    # Media and Web
-    - "vlc"
-    # TODO add LaTeX packages
-
-  # Packages to install on Ubuntu only.
-  ubuntu:
-    - "ubuntu-gnome-desktop"
-    # TODO add Netflix on Ubuntu Packages
-
-  # Packages to install using pip.
-  pip:
-    - "pep8"
-    - "pyyaml"
-
 
 settings:
   shell: "/bin/zsh"
