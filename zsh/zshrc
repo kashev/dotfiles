@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 # dotfiles
 # Kashev Dalmia | @kashev | kashev.dalmia@gmail.com
 
@@ -74,3 +75,10 @@ alias svnlog="svn log | less"
 # Report CPU usage for commands running longer than 10 seconds
 # Thanks to http://nuclearsquid.com/writings/reporttime-in-zsh/
 REPORTTIME=10
+
+#############################
+# VIRTUAL ENV CONFIGURATION #
+#############################
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/dev
+source /usr/local/bin/virtualenvwrapper.sh
