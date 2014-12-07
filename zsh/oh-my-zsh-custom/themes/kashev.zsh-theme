@@ -4,12 +4,11 @@
 #
 # Custom theme for oh-my-zsh, based on gnzh (based on bira),
 # with parts lovingly stolen from the following themes:
-#
-# TODO: Themes to build from:
 # mortalscumbag - dots for git status
 # minimal - svn status as well, dots
+#
+# TODO: Themes to build from:
 # michelebologna - time
-# miloshadzic - lightning
 
 # load some modules
 autoload -U colors zsh/terminfo # Used in the color alias below
@@ -126,6 +125,7 @@ ZSH_THEME_SVN_PROMPT_DIRTY=$ZSH_THEME_GIT_PROMPT_DIRTY
 ZSH_THEME_SVN_PROMPT_CLEAN=$ZSH_THEME_GIT_PROMPT_CLEAN
 
 # Set the Prompts
-PROMPT="╭── ${user_host} ${current_dir} ${git_branch} $(virtualenv_info)
+PROMPT="\
+╭── ${user_host} ${current_dir} ${git_branch} $(virtualenv_info)
 ╰─$PR_PROMPT "
-RPS1="${return_code}"
+RPROMPT="${return_code} %D{[%I:%M:%S]}"
