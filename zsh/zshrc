@@ -68,6 +68,9 @@ alias gitd="git d"     # git d is defined in .gitconfig
 # SVN Aliases - To Make SVN More Like Git
 alias svnlog="svn log | less"
 
+# Development Aliases
+alias clion="./~/sw/clion/bin/clion.h"
+
 ##############################
 # Long Command Configuration #
 ##############################
