@@ -108,7 +108,7 @@ ${PR_WHITE}\
 ${PR_NO_COLOR}\
 ${PR_HOST}'
 
-local current_dir='%{$PR_BOLD$PR_BLUE%}\
+local current_dir='%{$PR_BLUE%}\
 $(get_pwd)\
 %{$PR_NO_COLOR%}'
 
