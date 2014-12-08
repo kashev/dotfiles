@@ -28,6 +28,7 @@ eval PR_BOLD="%{$terminfo[bold]%}"
 function get_pwd() {
     echo "${PWD/$HOME/~}"
 }
+
 # Virual Env Function
 # http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/
 function virtualenv_info {
@@ -131,4 +132,4 @@ ZSH_THEME_SVN_PROMPT_CLEAN=$ZSH_THEME_GIT_PROMPT_CLEAN
 PROMPT="\
 ╭── ${user_host} ${current_dir} ${git_branch} $(virtualenv_info)
 ╰─$PR_PROMPT "
-RPROMPT="${return_code}%D{[%I:%M:%S]}"
+RPROMPT="${return_code} %D{[%I:%M:%S]}"

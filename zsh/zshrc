@@ -85,3 +85,9 @@ REPORTTIME=10
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/dev
 source /usr/local/bin/virtualenvwrapper.sh
+
+###########################
+# Base16 Colors Installer #
+###########################
+BASE16_SHELL="$HOME/.shell-scripts/base16-monokai.dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL

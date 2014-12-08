@@ -198,8 +198,6 @@ def main():
 
     require_logout = False
 
-    # TODO: Check and install external dependencies in a portable way.
-
     # Validate Files: if the -c flag is passed, don't continue past this step.
     valid = validate_files()
     if args.check or not valid:
