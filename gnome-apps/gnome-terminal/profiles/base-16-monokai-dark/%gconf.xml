@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<gconf>
+	<entry name="use_theme_background" mtime="1418000762" type="bool" value="false"/>
+	<entry name="use_theme_colors" mtime="1418000762" type="bool" value="false"/>
+	<entry name="bold_color_same_as_fg" mtime="1418000762" type="bool" value="true"/>
+	<entry name="bold_color" mtime="1418000762" type="string">
+		<stringvalue>#f8f8f2</stringvalue>
+	</entry>
+	<entry name="foreground_color" mtime="1418000762" type="string">
+		<stringvalue>#f8f8f2</stringvalue>
+	</entry>
+	<entry name="background_color" mtime="1418000762" type="string">
+		<stringvalue>#272822</stringvalue>
+	</entry>
+	<entry name="palette" mtime="1418000762" type="string">
+		<stringvalue>#272822:#f92672:#a6e22e:#f4bf75:#66d9ef:#ae81ff:#a1efe4:#f8f8f2:#75715e:#f92672:#a6e22e:#f4bf75:#66d9ef:#ae81ff:#a1efe4:#f9f8f5</stringvalue>
+	</entry>
+	<entry name="visible_name" mtime="1418000762" type="string">
+		<stringvalue>Base 16 Monokai Dark</stringvalue>
+	</entry>
+</gconf>
