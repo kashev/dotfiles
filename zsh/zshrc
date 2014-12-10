@@ -69,7 +69,7 @@ alias gitd="git d"     # git d is defined in .gitconfig
 alias svnlog="svn log | less"
 
 # Development Aliases
-alias clion="./~/sw/clion/bin/clion.h"
+alias clion="$HOME/sw/clion/bin/clion.sh"
 
 ##############################
 # Long Command Configuration #
