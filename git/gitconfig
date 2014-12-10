@@ -119,8 +119,6 @@
 	added = green bold
 	changed = yellow bold
 	untracked = red bold
-[github]
-	user = kashev
 [credential]
 	helper = cache
 [diff]
