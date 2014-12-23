@@ -54,9 +54,9 @@ sudo apt-get -y install htop \
 nautilus -q
 
 # Install JDK for JetBrains IDEs
-sudo add-apt-repository ppa:webupd8team/java
+sudo add-apt-repository -y ppa:webupd8team/java
 sudo apt-get update
-sudo apt-get install oracle-java8-installer
+sudo apt-get install -y oracle-java8-installer
 
 # Finish Upgrade
 sudo apt-get -y upgrade
