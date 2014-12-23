@@ -47,10 +47,11 @@ sudo apt-get -y install htop \
                         gimp \
                         vlc \
                         browser-plugin-vlc \
+                        filezilla \
                         bpython \
                         meld \
                         nautilus-open-terminal
-# Restart nautilus
+# Restart nautilus, if it's open.
 nautilus -q
 
 # Install JDK for JetBrains IDEs
