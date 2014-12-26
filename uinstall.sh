@@ -53,12 +53,16 @@ sudo apt-get -y install htop \
                         gimp \
                         vlc \
                         browser-plugin-vlc \
+                        meld \
                         filezilla \
                         bpython \
-                        meld \
                         nautilus-open-terminal
 # Restart nautilus, if it's open.
 nautilus -q
+
+#install LaTeX Things
+sudo apt-get -y install texlive \
+                        latexmk
 
 # Install JDK for JetBrains IDEs
 sudo apt-get install -y oracle-java8-installer
