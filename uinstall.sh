@@ -55,6 +55,7 @@ sudo apt-get -y install htop \
                         browser-plugin-vlc \
                         meld \
                         filezilla \
+                        lftp \
                         bpython \
                         nautilus-open-terminal
 # Restart nautilus, if it's open.
