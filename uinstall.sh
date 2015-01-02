@@ -6,27 +6,12 @@
 # Script for setting up a fresh Ubuntu install.
 
 # Add Extra PPAs for...
-# Sublime Text 3
+# Sublime Text 3 (Web Upd8)
 sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
-# JDK
+# JDK (Web Upd8)
 sudo add-apt-repository -y ppa:webupd8team/java
 # Update PPA list
 sudo apt-get -y update
-
-# Install Sublime Text 3
-sudo apt-get -y install sublime-text-installer
-
-# Install Gnome 3
-sudo apt-get -y install gnome-shell \
-                        ubuntu-gnome-desktop
-
-# Install Google Chrome
-sudo apt-get -y install libxss1 \
-                        libappindicator1 \
-                        libindicator7
-cd /tmp
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo dpkg -i google-chrome*.deb
 
 # Get Required Dotfiles Packages
 sudo apt-get -y install git \
@@ -48,6 +33,24 @@ git clone https://github.com/kashev/dotfiles.git
 cd dotfiles
 python install.py -vf
 
+# Install Sublime Text 3 (Web Upd8)
+sudo apt-get -y install sublime-text-installer
+
+# Install Gnome 3
+sudo apt-get -y install gnome-shell \
+                        ubuntu-gnome-desktop
+
+# Install JDK for JetBrains IDEs
+sudo apt-get install -y oracle-java8-installer
+
+# Install Google Chrome
+sudo apt-get -y install libxss1 \
+                        libappindicator1 \
+                        libindicator7
+cd /tmp
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome*.deb
+
 # Install Other Utilities
 sudo apt-get -y install htop \
                         gimp \
@@ -61,12 +64,12 @@ sudo apt-get -y install htop \
 # Restart nautilus, if it's open.
 nautilus -q
 
-#install LaTeX Things
+# Install LaTeX Things
 sudo apt-get -y install texlive \
                         latexmk
 
-# Install JDK for JetBrains IDEs
-sudo apt-get install -y oracle-java8-installer
+# Install SSH Server
+sudo apt-get -y install openssh-server
 
 # Finish Upgrade
 sudo apt-get -y upgrade
