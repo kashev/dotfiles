@@ -228,9 +228,14 @@ def main():
             require_logout |= change_login_shell(shell)
 
     # Create virtualenv storage folder, if it does not exist.
-    virtualenvs_dir = "~/.virtualenvs"
+    virtualenvs_dir = os.path.expanduser("~/.virtualenvs")
     if not os.path.exists(virtualenvs_dir):
+        logging.info("Creating virtualenvs dir : {}".format(virtualenvs_dir))
         os.makedirs(virtualenvs_dir)
+    # These hook files are not symlinked because the contents of the
+    # virtualenvs directory should not be version controlled.
+    for f in os.listdir("virtualenv_hooks"):
+        shutil.copy(os.path.join("virtualenv_hooks", f), virtualenvs_dir)
 
     if require_logout:
         print("Log in and log back out to apply all changes.")
