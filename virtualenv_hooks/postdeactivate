@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # This hook is sourced after every virtualenv is deactivated.
 
 # Source: http://virtualenvwrapper.readthedocs.org/en/latest/tips.html#zsh-prompt
