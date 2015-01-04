@@ -227,6 +227,11 @@ def main():
             shell = settings[setting]
             require_logout |= change_login_shell(shell)
 
+    # Create virtualenv storage folder, if it does not exist.
+    virtualenvs_dir = "~/.virtualenvs"
+    if not os.path.exists(virtualenvs_dir):
+        os.makedirs(virtualenvs_dir)
+
     if require_logout:
         print("Log in and log back out to apply all changes.")
 
