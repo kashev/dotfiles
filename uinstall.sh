@@ -17,6 +17,7 @@ sudo apt-get -y update
 sudo apt-get -y install git \
                         vim \
                         zsh \
+                        build-essential \
                         python \
                         python-dev \
                         python-pip \
