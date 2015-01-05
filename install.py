@@ -76,8 +76,6 @@ def validate_config_file(config_file):
                 paths[source]['dot']
                 paths[source]['path']
 
-            configs["settings"]
-
     except IOError as err:
         logging.critical('Problem opening {}:\n{}'
                          .format(config_file, err))
@@ -196,8 +194,6 @@ def main():
     if args.verbose:
         logging.basicConfig(level=logging.DEBUG)
 
-    require_logout = False
-
     # Validate Files: if the -c flag is passed, don't continue past this step.
     valid = validate_files()
     if args.check or not valid:
@@ -219,14 +215,6 @@ def main():
                        args.force,
                        paths[source]['dot'])
 
-    # Change system settings.
-    require_logout = False
-    settings = configs['settings']
-    for setting in settings:
-        if setting == "shell":
-            shell = settings[setting]
-            require_logout |= change_login_shell(shell)
-
     # Create virtualenv storage folder, if it does not exist.
     virtualenvs_dir = os.path.expanduser("~/.virtualenvs")
     if not os.path.exists(virtualenvs_dir):
@@ -236,10 +224,6 @@ def main():
     # virtualenvs directory should not be version controlled.
     for f in os.listdir("virtualenv_hooks"):
         shutil.copy(os.path.join("virtualenv_hooks", f), virtualenvs_dir)
-
-    if require_logout:
-        print("Log in and log back out to apply all changes.")
-
 
 if __name__ == '__main__':
     main()
