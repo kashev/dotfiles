@@ -76,6 +76,8 @@ def validate_config_file(config_file):
                 paths[source]['dot']
                 paths[source]['path']
 
+            configs['options']
+
     except IOError as err:
         logging.critical('Problem opening {}:\n{}'
                          .format(config_file, err))
@@ -112,15 +114,29 @@ def validate_files():
     return retval
 
 
+def get_login_shell():
+    """ Gets the current login shell:
+        getent passwd $LOGNAME | cut -d: -f7
+    """
+    output = subprocess.check_output("getent passwd $LOGNAME",
+                                     shell=True)
+    return output.strip().rsplit(':', 1)[1]
+
+
 def change_login_shell(shell):
     """ Change the default login shell using chsh. Returns True only if a
         change was made and a log-in/log-out may be required.
     """
-    if shell != os.environ['SHELL']:
+    new_shell = "/bin/{}".format(shell)
+    old_shell = get_login_shell()
+
+    if new_shell != old_shell:
         try:
             logging.info("Changing default shell to '{}'.".format(shell))
-            print("Type your password for 'chsh' : ", end="")
-            subprocess.check_call(["chsh", "-s " + shell])
+            print("Please enter your password for 'chsh' to {} : "
+                  .format(shell), end="")
+            sys.stdout.flush()
+            subprocess.check_call(["chsh", "-s", new_shell])
             return True
         except subprocess.CalledProcessError as err:
             logging.warning("Could not change login shell: {}".format(err))
@@ -224,6 +240,12 @@ def main():
     # virtualenvs directory should not be version controlled.
     for f in os.listdir("virtualenv_hooks"):
         shutil.copy(os.path.join("virtualenv_hooks", f), virtualenvs_dir)
+
+    # Apply system options
+    options = configs['options']
+    for option in options:
+        if option == 'shell':
+            change_login_shell(options[option])
 
 if __name__ == '__main__':
     main()

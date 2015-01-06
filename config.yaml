@@ -30,3 +30,6 @@ paths:
   sublimetext:
     path: "~/.config/sublime-text-3/Packages/User"
     dot: false
+
+options:
+  shell: "zsh"
