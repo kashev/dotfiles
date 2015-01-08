@@ -58,6 +58,7 @@ sudo apt-get -y install htop \
                         vlc \
                         browser-plugin-vlc \
                         meld \
+                        colordiff \
                         filezilla \
                         lftp \
                         bpython \
