@@ -24,6 +24,9 @@ sudo apt-get -y install git \
                         pep8 \
                         python-yaml
 sudo pip install virtualenvwrapper
+
+# Install Sublime Text 3 (Web Upd8)
+sudo apt-get -y install sublime-text-installer
 # Get Sublime Text to Create Dotfiles Directories
 subl
 pkill subl
@@ -34,8 +37,6 @@ git clone https://github.com/kashev/dotfiles.git
 cd dotfiles
 python install.py -vf
 
-# Install Sublime Text 3 (Web Upd8)
-sudo apt-get -y install sublime-text-installer
 
 # Install Gnome 3
 sudo apt-get -y install gnome-shell \
