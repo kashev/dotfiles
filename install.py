@@ -13,7 +13,6 @@ from __future__ import unicode_literals
 
 # IMPORTS
 import argparse
-import filecmp
 import logging
 import os
 import shutil
