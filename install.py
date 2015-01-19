@@ -13,6 +13,7 @@ from __future__ import unicode_literals
 
 # IMPORTS
 import argparse
+import filecmp
 import logging
 import os
 import shutil
@@ -161,12 +162,23 @@ def delete_and_link(source, dest, force=False):
         symlinks to be recreated, even if they already exist.
     """
     try:
-        if os.path.lexists(dest) and (force or not os.path.islink(dest)):
-            logging.info("Deleting existing {}".format(dest))
-            if os.path.isfile(dest) or os.path.islink(dest):
-                os.remove(dest)
-            elif os.path.isdir(dest):
-                shutil.rmtree(dest)
+        if os.path.lexists(dest):
+            # if force flag is on, delete the existing data
+            if force:
+                logging.info("Deleting existing {}".format(dest))
+                if os.path.isfile(dest) or os.path.islink(dest):
+                    os.remove(dest)
+                elif os.path.isdir(dest):
+                    shutil.rmtree(dest)
+            # if the force flag is not on and the target destination already
+            # exists, then check to see if the target link is already set. If
+            # not, back it up, and continue as if it were not there.
+            else:
+                if not (os.path.islink(dest) and
+                        (os.path.realpath(dest) == os.path.realpath(source))):
+                    logging.info("Backing up {} to {}.original"
+                                 .format(dest, dest))
+                    os.rename(dest, dest + '.original')
 
         if not os.path.lexists(dest):
             logging.info("Creating symlink {} to {}".format(source, dest))
@@ -196,7 +208,8 @@ def main():
                      "http://github.com/kashev/dotfiles"))
 
     parser.add_argument("-f", "--force",
-                        help="force creation of new symlinks",
+                        help="deletes whatever is in the way. use with extreme"
+                             " caution to avoid loss of data",
                         action="store_true")
     parser.add_argument("-v", "--verbose",
                         help="increase output verbosity",
