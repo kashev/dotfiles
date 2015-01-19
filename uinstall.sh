@@ -18,8 +18,8 @@ sudo apt-get -y install git \
                         vim \
                         zsh \
                         build-essential \
-                        python \
-                        python-dev \
+                        python python3 \
+                        python-dev python3-dev \
                         python-pip \
                         pep8 \
                         python-yaml
