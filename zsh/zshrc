@@ -64,6 +64,8 @@ alias diff="colordiff" # why would you want diff without colors?
 
 # One stop shop for living on the bleeding Ubuntu edge.
 alias ubuntuup="sudo apt-get update && sudo apt-get upgrade && sudo apt-get autoremove"
+# Update dotfiles
+alias dotup="git -C ~/sw/dotfiles pull"
 
 # Git Aliases - Mostly for Typo Mitigation
 alias gits="git s"     # git s is defined in .gitconfig
