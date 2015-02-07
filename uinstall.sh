@@ -70,6 +70,7 @@ nautilus -q
 # Install LaTeX Things
 sudo apt-get -y install texlive \
                         latexmk \
+                        texlive-latex-extra \
                         texlive-science
 
 # Install SSH Server
