@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+# dotfiles
+# Kashev Dalmia | @kashev | kashev.dalmia@gmail.com
+
+# Ping until successful - http://serverfault.com/a/42382/274685
+
+echo "Checking internet connection..."
+while ! ping -c1 www.google.com &>/dev/null; do :; done
+echo "Internet is up!"

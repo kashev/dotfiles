@@ -87,6 +87,9 @@ alias android-studio="$HOME/sw/android-studio/bin/studio.sh"
 alias untar="tar -xvzf"
 alias uptar="tar -zcvf"
 
+# isup - check for internet
+alias isup="$HOME/.shell-scripts/isup.zsh"
+
 ##############################
 # Long Command Configuration #
 ##############################
