@@ -87,8 +87,10 @@ alias android-studio="$HOME/sw/android-studio/bin/studio.sh"
 alias untar="tar -xvzf"
 alias uptar="tar -zcvf"
 
-# isup - check for internet
-alias isup="$HOME/.shell-scripts/isup.zsh"
+#######################
+# Add Scripts to Path #
+#######################
+export PATH=$PATH:$HOME/.shell-scripts
 
 ##############################
 # Long Command Configuration #
@@ -115,4 +117,6 @@ function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 ###########################
 BASE16_SHELL="$HOME/.shell-scripts/base16-monokai.dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+
+
 
