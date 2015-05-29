@@ -45,8 +45,8 @@
 	l = log --oneline
 	lg = log --oneline --graph --decorate
 	#############
-	o = checkout
-	ob = checkout -b
+	co = checkout
+	cob = checkout -b
 	#############
 	b = branch
 	ba = branch -a
@@ -103,6 +103,8 @@
 	meldof = config --remove-section diff
 	#############
 	human = name-rev --name-only --refs=refs/heads/*
+	#############
+	pullsub = submodule update --init --recursive
 [color]
 	ui = true
 [color "branch"]
