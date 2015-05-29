@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+# dotfiles
+# Kashev Dalmia | @kashev | kashev.dalmia@gmail.com
+
+git checkout .
+git clean -fd
