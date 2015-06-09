@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+# dotfiles
+# Kashev Dalmia | @kashev | kashev.dalmia@gmail.com
+
+# Make which 'follow' symlinks.
+
+which $1 | xargs ls --color=tty -al
