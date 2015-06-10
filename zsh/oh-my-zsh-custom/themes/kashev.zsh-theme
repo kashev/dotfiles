@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 # dotfiles
 # Kashev Dalmia | @kashev | kashev.dalmia@gmail.com
 # kashev.zsh-theme
