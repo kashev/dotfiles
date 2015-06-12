@@ -1,7 +1,0 @@
-#!/usr/bin/env zsh
-# dotfiles
-# Kashev Dalmia | @kashev | kashev.dalmia@gmail.com
-
-# An alias for fixing scaling issues on Google Chrome 43.0.2357.124 for Ubuntu.
-
-google-chrome --high-dpi-support=1 --force-device-scale-factor=1
