@@ -1,0 +1,113 @@
+#!/usr/bin/env python3
+# dotfiles
+# Kashev Dalmia | @kashev | kashev.dalmia@gmail.com
+
+# A script for programatically getting battery information, as well as returning
+# a well formatted text battery icon for use in a shell prompt.
+
+import argparse
+import subprocess
+import yaml
+
+
+def get_battery_info():
+    """ Get the battery information. """
+    # upower -i $(upower -e | grep BAT) |
+    #   grep --color=never -E "state|to\ full|to\ empty|percentage"
+    upower_e = subprocess.Popen(('upower', '-e'), stdout=subprocess.PIPE)
+    battery_location = subprocess.check_output(('grep', 'BAT'),
+                                               stdin=upower_e.stdout).strip()
+    upower_e.wait()
+
+    upower_i = subprocess.Popen(('upower', '-i', battery_location),
+                                stdout=subprocess.PIPE)
+    battery_info = yaml.load(subprocess.check_output(
+        ("grep", "--color=never", "-E",
+         "state|to\ full|to\ empty|percentage"),
+        stdin=upower_i.stdout).decode('utf-8'))
+    upower_i.wait()
+
+    if battery_info['state'] == 'charging':
+        battery_info['charging'] = True
+        battery_info['time_str'] = 'time to full'
+    else:
+        battery_info['charging'] = False
+        battery_info['time_str'] = 'time to empty'
+
+    battery_info['time'] = battery_info[battery_info['time_str']]
+
+    battery_info['level'] = int(battery_info['percentage'][:-1]) / 100
+
+    return battery_info
+
+
+def battery_icon(length, level, charging):
+    """ Return a terminal battery icon for use in a shell prompt. """
+    pass
+
+
+def print_battery_info(battery_info, percentage, state, time):
+    """ Print the battery information. """
+    format_str = '    {}{}'
+    pad = 21
+    if not any((percentage, state, time)):
+        # print all three.
+        print(format_str.format(
+            'percentage:'.ljust(pad), battery_info['percentage']))
+        print(format_str.format(
+            'state:'.ljust(pad), battery_info['state']))
+        print(format_str.format(
+            (battery_info['time_str'] + ':').ljust(pad), battery_info['time']))
+    else:
+        # print each.
+        if percentage:
+            print(format_str.format(
+                'percentage:'.ljust(pad), battery_info['percentage']))
+        if state:
+            print(format_str.format(
+                'state:'.ljust(pad), battery_info['state']))
+        if time:
+            print(format_str.format(
+                (battery_info['time_str'] + ':').ljust(pad),
+                battery_info['time']))
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Get battery information on Ubuntu.")
+
+    parser.add_argument("-p", "--percentage",
+                        help="Display the percentage remaining",
+                        action="store_true")
+    parser.add_argument("-s", "--state",
+                        help="Display the charging state",
+                        action="store_true")
+    parser.add_argument("-t", "--time",
+                        help="Display the time to empty or full.",
+                        action="store_true")
+
+    parser.add_argument("-b", "--battery-icon",
+                        help="Return formatted battery icon of length N.",
+                        type=int)
+
+    args = parser.parse_args()
+
+    # Get battery information
+    battery_info = get_battery_info()
+
+    if args.battery_icon:
+        icon = battery_icon(args.battery_icon,
+                            battery_info['level'],
+                            battery_info['charging'])
+        print(icon)
+
+    else:
+        print_battery_info(
+            battery_info,
+            percentage=args.percentage,
+            state=args.state,
+            time=args.time)
+
+
+if __name__ == '__main__':
+    main()

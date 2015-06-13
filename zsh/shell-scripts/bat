@@ -1,8 +1,1 @@
-#!/usr/bin/env zsh
-# dotfiles
-# Kashev Dalmia | @kashev | kashev.dalmia@gmail.com
-
-# Display Battery Information - http://askubuntu.com/a/102863/415054
-
-
-upower -i $(upower -e | grep BAT) | grep --color=never -E "state|to\ full|to\ empty|percentage"
+battery-info
