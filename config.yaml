@@ -12,6 +12,9 @@ paths:
   vim:
     path: "~"
     dot: true
+  tmux:
+    path: "~"
+    dot: true
 
   # ZSH and Shell Options
   zsh:
