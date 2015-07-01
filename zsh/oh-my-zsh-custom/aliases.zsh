@@ -13,11 +13,8 @@ alias bpy3="bpython3"  # http://bpython-interpreter.org/
 alias pwdp="pwd -P"    # print working directory w/o symlinks
 alias diff="colordiff" # why would you want diff without colors?
 
-# One stop shop for living on the bleeding Ubuntu edge.
-alias ubuntuup="sudo apt-get update && \
-                sudo apt-get upgrade && \
-                sudo apt-get autoremove"
 alias ubuntuversion="lsb_release -a"
+
 # Update dotfiles
 alias dotup="git -C ~/sw/dotfiles pull"
 
