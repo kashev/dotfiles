@@ -8,10 +8,11 @@
 
 alias sudo='sudo '     # enable use of aliases as sudo
 
-alias bpy="bpython"    # http://bpython-interpreter.org/
-alias bpy3="bpython3"  # http://bpython-interpreter.org/
-alias pwdp="pwd -P"    # print working directory w/o symlinks
-alias diff="colordiff" # why would you want diff without colors?
+alias bpy="bpython"     # http://bpython-interpreter.org/
+alias bpy3="bpython3"   # http://bpython-interpreter.org/
+alias pwdp="pwd -P"     # print working directory w/o symlinks
+alias cdp="cd `pwd -P`" # change to the physical directory
+alias diff="colordiff"  # why would you want diff without colors?
 
 alias ubuntuversion="lsb_release -a"
 
