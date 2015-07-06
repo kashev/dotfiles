@@ -3,6 +3,7 @@
 # Kashev Dalmia | @kashev | kashev.dalmia@gmail.com
 
 # One stop shop for living on the bleeding Ubuntu edge.
-sudo apt-get update && \
-sudo apt-get upgrade && \
+set -e
+sudo apt-get update
+sudo apt-get upgrade
 sudo apt-get autoremove
