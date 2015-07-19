@@ -1,3 +1,4 @@
+# Set your own name and email to be used for git commits.
 [user]
     name = Kashev Dalmia
     email = kashev.dalmia@gmail.com

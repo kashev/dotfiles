@@ -8,11 +8,13 @@
 		"CMake",
 		"DocBlockr",
 		"Emmet",
+		"GitGutter",
 		"LaTeXTools",
 		"Open in Default Application",
 		"Package Control",
 		"Sass",
 		"SublimePythonIDE",
+		"Text Pastry",
 		"TrailingSpaces"
 	]
 }
