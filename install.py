@@ -21,13 +21,11 @@ import sys
 # As this script is meant to be installed on a fresh installation, non default
 # imports are in a try-except block to cleanly handle uninstalled dependencies.
 try:
-    import pep8
     import yaml
 except ImportError as err:
     logging.critical("Missing dependency: {}. "
-                     "Run 'sudo pip install pep8 pyyaml' or install the "
-                     "packages 'pep8' and 'python-yaml' with your system "
-                     "package manager."
+                     "Run 'sudo pip install pyyaml' or install the package "
+                     "'python-yaml' with your system package manager."
                      .format(err))
     sys.exit(1)
 
@@ -37,23 +35,6 @@ CONFIG_FILE = "config.yaml"
 
 
 # FUNCTIONS
-
-def check_pep8(*files):
-    """ Check that the files conform to pep8. Return True if they do. """
-    logging.info("Validating files for pep8 conformance...")
-
-    flist = [f for f in files]
-
-    pep8style = pep8.StyleGuide(quiet=True)
-    pep8result = pep8style.check_files(flist)
-
-    if pep8result.total_errors != 0:
-        logging.warning("1 or more files does not conform to pep8: {} errors."
-                        .format(pep8result.total_errors))
-        pep8result.print_statistics()
-        return False
-    else:
-        return True
 
 
 def validate_config_file(config_file):
@@ -103,11 +84,8 @@ def validate_files():
         entire project, including this script.
     """
     logging.info("Validating projet...")
-    retval = True
-    # pep8 this script for style. The return value doesn't matter for project
-    # validity, so don't use the return value.
-    check_pep8(__file__)
 
+    retval = True
     retval &= validate_config_file(CONFIG_FILE)
 
     logging.info("Done.")
@@ -213,8 +191,8 @@ def main():
     parser.add_argument("-v", "--verbose",
                         help="increase output verbosity",
                         action="store_true")
-    parser.add_argument("-c", "--check", "--validate",
-                        help="only validate, don't install",
+    parser.add_argument("-c", "--check",
+                        help="check config, don't install",
                         action="store_true")
 
     args = parser.parse_args()

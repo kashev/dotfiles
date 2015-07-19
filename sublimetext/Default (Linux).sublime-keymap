@@ -1,11 +1,11 @@
 [
-    /**
-     * Fix for Linux Multiselect
+    /*
+     * Fix for Linux Multiselect on Gnome 3.
      */
     { "keys": ["alt+shift+up"], "command": "select_lines", "args": {"forward": false} },
     { "keys": ["alt+shift+down"], "command": "select_lines", "args": {"forward": true} },
 
-    /**
+    /*
      * Keybindings Stolen from Netbeans
      */
     // Delete Line - clobbers slurp_find_string
