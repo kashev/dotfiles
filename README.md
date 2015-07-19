@@ -13,6 +13,8 @@ You must have `python` version 2.7 or higher installed to run the install script
 # Instructions
 Run `python install.py` from inside of `/dotfiles` to create all necessary symlinks. Run `python install.py --help` to see more information.
 
+Remember to set your own name and email address in `git/gitconfig.name`.
+
 # Thanks
 Thanks to all the projects that make this project possible.
 - [git](http://git-scm.com/)
