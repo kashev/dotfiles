@@ -1,17 +1,18 @@
 {
-    "in_process_packages":
-    [
-    ],
-    "installed_packages":
-    [
-        "ApacheConf.tmLanguage",
-        "CMake",
-        "DocBlockr",
-        "Emmet",
-        "LaTeXTools",
-        "Open in Default Application",
-        "Package Control",
-        "Sass",
-        "SublimePythonIDE"
-    ]
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"ApacheConf.tmLanguage",
+		"CMake",
+		"DocBlockr",
+		"Emmet",
+		"LaTeXTools",
+		"Open in Default Application",
+		"Package Control",
+		"Sass",
+		"SublimePythonIDE",
+		"TrailingSpaces"
+	]
 }
