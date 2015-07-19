@@ -34,7 +34,10 @@ def get_battery_info():
         battery_info['charging'] = False
         battery_info['time_str'] = 'time to empty'
 
-    battery_info['time'] = battery_info[battery_info['time_str']]
+    if battery_info['state'] != 'fully-charged':
+        battery_info['time'] = battery_info[battery_info['time_str']]
+    else:
+        battery_info['time'] = '0'
 
     battery_info['level'] = int(battery_info['percentage'][:-1]) / 100
 
@@ -83,11 +86,11 @@ def main():
                         help="Display the charging state",
                         action="store_true")
     parser.add_argument("-t", "--time",
-                        help="Display the time to empty or full.",
+                        help="Display the time to empty or full",
                         action="store_true")
 
     parser.add_argument("-b", "--battery-icon",
-                        help="Return formatted battery icon of length N.",
+                        help="Return formatted battery icon of length N",
                         type=int)
 
     args = parser.parse_args()

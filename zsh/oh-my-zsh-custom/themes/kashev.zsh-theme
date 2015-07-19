@@ -30,54 +30,48 @@ function get_pwd() {
     echo "${PWD/$HOME/~}"
 }
 
-# Virual Env Function
-# http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/
-function virtualenv_info {
-    [ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`') '
-}
-
 # Git Stuff
 # mortalscumbag
 function my_git_prompt() {
-  tester=$(git rev-parse --git-dir 2> /dev/null) || return
+    tester=$(git rev-parse --git-dir 2> /dev/null) || return
 
-  INDEX=$(git status --porcelain 2> /dev/null)
-  STATUS=""
+    INDEX=$(git status --porcelain 2> /dev/null)
+    STATUS=""
 
-  # is branch ahead?
-  if $(echo "$(git log origin/$(current_branch)..HEAD 2> /dev/null)" | grep '^commit' &> /dev/null); then
-    STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_AHEAD"
-  fi
+    # is branch ahead?
+    if $(echo "$(git log origin/$(current_branch)..HEAD 2> /dev/null)" | grep '^commit' &> /dev/null); then
+        STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_AHEAD"
+    fi
 
-  # is anything staged?
-  if $(echo "$INDEX" | grep -E -e '^(D[ M]|[MARC][ MD]) ' &> /dev/null); then
-    STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_STAGED"
-  fi
+    # is anything staged?
+    if $(echo "$INDEX" | grep -E -e '^(D[ M]|[MARC][ MD]) ' &> /dev/null); then
+        STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_STAGED"
+    fi
 
-  # is anything unstaged?
-  if $(echo "$INDEX" | grep -E -e '^[ MARC][MD] ' &> /dev/null); then
-    STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_UNSTAGED"
-  fi
+    # is anything unstaged?
+    if $(echo "$INDEX" | grep -E -e '^[ MARC][MD] ' &> /dev/null); then
+        STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_UNSTAGED"
+    fi
 
-  # is anything untracked?
-  if $(echo "$INDEX" | grep '^?? ' &> /dev/null); then
-    STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_UNTRACKED"
-  fi
+    # is anything untracked?
+    if $(echo "$INDEX" | grep '^?? ' &> /dev/null); then
+      STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_UNTRACKED"
+    fi
 
-  # is anything unmerged?
-  if $(echo "$INDEX" | grep -E -e '^(A[AU]|D[DU]|U[ADU]) ' &> /dev/null); then
-    STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_UNMERGED"
-  fi
+    # is anything unmerged?
+    if $(echo "$INDEX" | grep -E -e '^(A[AU]|D[DU]|U[ADU]) ' &> /dev/null); then
+        STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_UNMERGED"
+    fi
 
-  if [[ -n $STATUS ]]; then
-    STATUS=" $STATUS"
-  fi
+    if [[ -n $STATUS ]]; then
+        STATUS=" $STATUS"
+    fi
 
-  echo "$ZSH_THEME_GIT_PROMPT_PREFIX$(my_current_branch)$STATUS$ZSH_THEME_GIT_PROMPT_SUFFIX"
+    echo "$ZSH_THEME_GIT_PROMPT_PREFIX$(my_current_branch)$STATUS$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
 
 function my_current_branch() {
-  echo $(current_branch || echo "(no branch)")
+    echo $(current_branch || echo "(no branch)")
 }
 
 # Set User and Host, with Color
@@ -123,14 +117,33 @@ ZSH_THEME_GIT_PROMPT_UNSTAGED="%{$PR_BOLD$PR_YELLOW%}●"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$PR_BOLD$PR_RED%}●"
 ZSH_THEME_GIT_PROMPT_UNMERGED="%{$PR_BOLD$PR_RED%}✕"
 
-# Configure SVN information like Git Configuration
-ZSH_THEME_SVN_PROMPT_PREFIX=$ZSH_THEME_GIT_PROMPT_PREFIX
-ZSH_THEME_SVN_PROMPT_SUFFIX=$ZSH_THEME_GIT_PROMPT_SUFFIX
-ZSH_THEME_SVN_PROMPT_DIRTY=$ZSH_THEME_GIT_PROMPT_DIRTY
-ZSH_THEME_SVN_PROMPT_CLEAN=$ZSH_THEME_GIT_PROMPT_CLEAN
 
+# Get the length of an input string, counting only user visible characters.
+# http://stackoverflow.com/a/10564427/1473320
+function lenv() {
+    local FOO=$1
+    FOO=${(%)FOO}
+    FOO=${(e)FOO}
+    local zero='%([BSUbfksu]|([FB]|){*})'
+    local len=${#${(S%%)FOO//$~zero/}}
+    echo $len
+}
+
+# Top line RPROMPT
+# http://code.tutsplus.com/tutorials/how-to-customize-your-command-prompt--net-24083
+local clover='${PR_GREEN}☘${PR_NO_COLOR}'
+
+function put_spacing() {
+    local termwidth
+    (( termwidth = ${COLUMNS} - 4 - $(lenv $user_host) - $(lenv $current_dir) - $(lenv $git_branch) - 4 - $(lenv $clover) - 2))
+    local s=""
+    for i in {1..$termwidth}; do
+        s="${s} "
+    done
+    echo $s
+}
 # Set the Prompts
 PROMPT="\
-╭── ${user_host} ${current_dir} ${git_branch} $(virtualenv_info)
+╭── ${user_host} ${current_dir} ${git_branch}
 ╰─$PR_PROMPT "
-RPROMPT="${return_code} %D{[%I:%M:%S]}"
+RPROMPT='${return_code} %D{[%I:%M:%S]}'
