@@ -30,6 +30,10 @@ sudo apt-get -y install sublime-text-installer
 # Get Sublime Text to Create Dotfiles Directories
 subl
 pkill subl
+# Install Package Control
+wget \
+    --directory-prefix="$HOME/.config/sublime-text-3/Installed Packages/" \
+    https://sublime.wbond.net/Package%20Control.sublime-package
 # Clone Dotfiles
 mkdir ~/sw
 cd ~/sw
