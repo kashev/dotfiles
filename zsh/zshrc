@@ -46,6 +46,8 @@ setopt append_history no_share_history
 # Set a HOSTNAME variable, like in bash
 export HOSTNAME=`hostname`
 
+export BROWSER=google-chrome
+
 #######################
 # Add Scripts to Path #
 #######################

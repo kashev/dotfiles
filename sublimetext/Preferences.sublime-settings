@@ -1,4 +1,9 @@
 {
+	"added_words":
+	[
+		"Kashev",
+		"Dalmia"
+	],
 	"auto_indent": true,
 	"close_windows_when_empty": false,
 	"color_scheme": "Packages/User/Monokai Bright (SublimePythonIDE).tmTheme",
