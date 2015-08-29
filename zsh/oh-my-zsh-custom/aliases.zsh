@@ -36,3 +36,5 @@ alias android-studio="$HOME/sw/android-studio/bin/studio.sh"
 # tar Aliases - http://xkcd.com/1168/
 alias untar="tar -xvzf"
 alias uptar="tar -zcvf"
+
+alias fixbluetooth="sudo rfkill unblock bluetooth"
