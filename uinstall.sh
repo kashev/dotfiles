@@ -67,10 +67,7 @@ sudo apt-get -y install htop \
                         filezilla \
                         lftp \
                         bpython \
-                        bpython3 \
-                        nautilus-open-terminal
-# Restart nautilus, if it's open.
-nautilus -q
+                        bpython3
 
 # Install LaTeX Things
 sudo apt-get -y install texlive \
