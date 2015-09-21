@@ -30,6 +30,7 @@ alias svnlog="svn log | less"
 
 # Development Aliases
 alias clion="$HOME/sw/clion/bin/clion.sh"
+alias pycharm="$HOME/sw/pycharm/bin/pycharm.sh"
 alias dj="python manage.py"
 alias android-studio="$HOME/sw/android-studio/bin/studio.sh"
 
