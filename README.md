@@ -24,4 +24,3 @@ Thanks to all the projects that make this project possible.
 - [oh-my-zsh](http://ohmyz.sh/)
 - [Sublime Text](http://www.sublimetext.com/)
 - [vim](http://www.vim.org/)
-
