@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# dotfiles
+# Kashev Dalmia | @kashev | kashev.dalmia@gmail.com
+
+import sys
+
+
+def aesthetic(text):
+    """ Turn the input into aesthetic text. Namely,
+            1. Make it upper case.
+            2. Add spaces between every letter.
+    """
+    return ' '.join(list((text.replace(' ', '').upper())))
+
+
+def main():
+    """ Given a command line input, make it A E S T H E T I C """
+    cmd_line_input = ' '.join(sys.argv[1:])
+
+    print(aesthetic(cmd_line_input))
+
+
+if __name__ == '__main__':
+    main()
