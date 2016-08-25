@@ -6,17 +6,19 @@
     { "keys": ["alt+shift+down"], "command": "select_lines", "args": {"forward": true} },
 
     /*
-     * Keybindings Stolen from Netbeans
+     * Keybindings Stolen from Netbeans.
      */
-    // Delete Line - clobbers slurp_find_string
+    // Delete Line - clobbers slurp_find_string.
     { "keys": ["ctrl+e"], "command": "run_macro_file", "args": {"file": "res://Packages/Default/Delete Line.sublime-macro"} },
     // Open Header/Source from Source/Header - clobbers expand selection to tag.
     { "keys": ["ctrl+shift+a"], "command": "switch_file", "args": {"extensions": ["cpp", "cxx", "cc", "c", "hpp", "hxx", "h", "ipp", "inl", "m", "mm"]} },
-    // Search in Selection
+    // Search in Selection.
     { "keys": ["ctrl+alt+f"], "command": "show_panel", "args": {"panel": "find", "reverse": false, "in_selection": true} },
+    // Search File Names with the same key command as Netbeans.
+    { "keys": ["alt+shift+o"], "command": "show_overlay", "args": {"overlay": "goto", "show_files": true} },
 
     /*
-     * Keybindings for Markdown Preview
+     * Keybindings for Markdown Preview.
      */
     { "keys": ["ctrl+alt+m"], "command": "markdown_preview", "args": {"target": "browser"} }
 ]
