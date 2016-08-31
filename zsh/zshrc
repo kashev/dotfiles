@@ -22,7 +22,7 @@ COMPLETION_WAITING_DOTS="true"
 
 # oh-my-zsh Plugins
 plugins=(
-    colored-man
+    colored-man-pages
     command-not-found
     git
     sublime
