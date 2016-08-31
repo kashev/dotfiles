@@ -6,6 +6,7 @@
 	"installed_packages":
 	[
 		"ApacheConf.tmLanguage",
+		"C++ Starting Kit",
 		"CMake",
 		"DocBlockr",
 		"Emmet",
@@ -21,6 +22,7 @@
 		"Text Pastry",
 		"Tomorrow Color Schemes",
 		"TrailingSpaces",
-		"Wrap Plus"
+		"Wrap Plus",
+		"YcmdCompletion"
 	]
 }
