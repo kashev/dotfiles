@@ -1,0 +1,12 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+    // Editor and Navigation Settings
+    { "key": "ctrl+shift+a", "command": "togglehs.toggleHS" },
+    { "key": "ctrl+e",       "command": "editor.action.deleteLines",
+                                "when": "editorTextFocus" },
+    { "key": "alt+left",     "command": "workbench.action.navigateBack" },
+    { "key": "alt+right",    "command": "workbench.action.navigateForward" },
+
+    // Rewrap Settings
+    { "key": "ctrl+shift+q", "command": "rewrap.rewrapComment" }
+]

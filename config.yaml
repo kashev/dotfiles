@@ -34,5 +34,10 @@ paths:
     path: "~/.config/sublime-text-3/Packages/User"
     dot: false
 
+  # Visual Studio Code settings location, as installed through the .deb.
+  vscode:
+    path: "~/.config/Code/User"
+    dot: false
+
 options:
   shell: "zsh"

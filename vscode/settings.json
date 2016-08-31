@@ -1,0 +1,16 @@
+/**
+ * User Settings
+ */
+
+// Place your settings in this file to overwrite the default settings
+{
+    // Editor Settings
+    "editor.rulers":             [80],
+    "editor.renderIndentGuides": true,
+
+    // Trailing Spaces Settings
+    "trailing-spaces.deleteModifiedLinesOnly": true,
+
+    // Rewrap Settings
+    "rewrap.wrappingColumn": 80
+}
