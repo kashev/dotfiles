@@ -24,8 +24,8 @@ paths:
     path: "~"
     dot: true
 
-  gnome-apps:
-    path: "~/.gconf/apps"
+  terminator:
+    path: "~/.config/terminator"
     dot: false
 
   # ST3 Location as installed through this PPA:
