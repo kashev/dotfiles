@@ -1,4 +1,9 @@
 [global_config]
+  enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  inactive_color_offset = 1.0
+  title_font = DejaVu Sans Mono 10
+  title_transmit_bg_color = "#f92672"
+  title_use_system_font = False
 [keybindings]
 [layouts]
   [[default]]

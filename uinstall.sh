@@ -10,6 +10,7 @@
 sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
 # JDK (Web Upd8)
 sudo add-apt-repository -y ppa:webupd8team/java
+
 # Update PPA list
 sudo apt -y update
 
@@ -34,6 +35,7 @@ pkill subl
 wget \
     --directory-prefix="$HOME/.config/sublime-text-3/Installed Packages/" \
     https://sublime.wbond.net/Package%20Control.sublime-package
+
 # Clone Dotfiles
 mkdir ~/sw
 pushd ~/sw
