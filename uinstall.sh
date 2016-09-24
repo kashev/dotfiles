@@ -34,6 +34,11 @@ pkill subl
 wget \
     --directory-prefix="$HOME/.config/sublime-text-3/Installed Packages/" \
     https://sublime.wbond.net/Package%20Control.sublime-package
+
+# Get Visual Studio Code to make Config Directories
+code
+pkill code
+
 # Clone Dotfiles
 mkdir ~/sw
 cd ~/sw
