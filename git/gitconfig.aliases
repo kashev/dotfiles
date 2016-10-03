@@ -15,6 +15,7 @@
     dck = diff --cached --check
     dt = difftool
     dtd = difftool --dir-diff
+    dun = diff --name-only --diff-filter=U
     #############
     c = commit
     ca = commit -a
