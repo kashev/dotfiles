@@ -12,10 +12,12 @@
     d = diff
     dc = diff --cached
     dk = diff --check
+    ds = diff --stat
     dck = diff --cached --check
     dt = difftool
     dtd = difftool --dir-diff
     dun = diff --name-only --diff-filter=U
+    un = ls-files --others --exclude-standard
     #############
     c = commit
     ca = commit -a
