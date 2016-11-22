@@ -12,6 +12,9 @@
 
     "diffEditor.ignoreTrimWhitespace": false,
 
+// Extensions
+    "extensions.autoUpdate" : true,
+
 // Workbench
     "workbench.editor.enablePreviewFromQuickOpen": false,
 
