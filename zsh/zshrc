@@ -43,6 +43,9 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Change History to not share incremental history between terminals.
 setopt append_history no_share_history
 
+# Allow for normal globbing
+unsetopt nomatch
+
 # Set a HOSTNAME variable, like in bash
 export HOSTNAME=`hostname`
 

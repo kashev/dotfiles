@@ -4,11 +4,21 @@
 
 // Place your settings in this file to overwrite the default settings
 {
-    // Editor Settings
-    "editor.rulers":             [80],
-    "editor.renderIndentGuides": true,
+// Editor
+    "editor.rulers":                  [80],
+    "editor.renderIndentGuides":      true,
+    "editor.renderWhitespace":        true,
+    "editor.renderControlCharacters": true,
 
-    // Trailing Spaces Settings
+    "diffEditor.ignoreTrimWhitespace": false,
+
+// Workbench
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+
+// File Explorer
+    "explorer.autoReveal": false,
+
+// Trailing Spaces
     "trailing-spaces.deleteModifiedLinesOnly": true,
 
     // Rewrap Settings
