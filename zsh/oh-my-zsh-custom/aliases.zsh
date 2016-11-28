@@ -14,6 +14,8 @@ alias pwdp="pwd -P"     # print working directory w/o symlinks
 alias cdp="cd `pwd -P`" # change to the physical directory
 alias diff="colordiff"  # why would you want diff without colors?
 
+alias vscode="code" # How presumptive that Visual Studio Code is just code.
+
 alias ubuntuversion="lsb_release -a"
 
 # Update dotfiles
@@ -39,4 +41,5 @@ alias android-studio="$HOME/sw/android-studio/bin/studio.sh"
 alias untar="tar -xvzf"
 alias uptar="tar -zcvf"
 
+# My laptop is trash.
 alias fixbluetooth="sudo rfkill unblock bluetooth"
