@@ -10,6 +10,8 @@
 sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
 # JDK (Web Upd8)
 sudo add-apt-repository -y ppa:webupd8team/java
+# Chrome GNOME Shell connector
+sudo add-apt-repository ppa:ne0sight/chrome-gnome-shell
 
 # Update PPA list
 sudo apt -y update
@@ -36,9 +38,16 @@ wget \
     --directory-prefix="$HOME/.config/sublime-text-3/Installed Packages/" \
     https://sublime.wbond.net/Package%20Control.sublime-package
 
+# TODO: Install Visual Studio Code
+
 # Get Visual Studio Code to make Config Directories
 code
 pkill code
+
+# Install Terminator
+sudo apt install terminator
+terminator
+pkill terminator
 
 # Clone Dotfiles
 mkdir ~/sw
@@ -65,9 +74,11 @@ pushd /tmp
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome*.deb
 
+# Install Gnome Shell Chrome connector
+sudo apt install chrome-gnome-shell
+
 # Install Other Utilities
 sudo apt -y install htop \
-                    terminator \
                     gimp \
                     vlc \
                     browser-plugin-vlc \
