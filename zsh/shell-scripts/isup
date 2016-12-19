@@ -5,5 +5,5 @@
 # Ping until successful - http://serverfault.com/a/42382/274685
 
 echo "Checking internet connection..."
-while ! ping -c1 www.google.com &>/dev/null; do :; done
+while ! ping -c1 http://www.google.com &>/dev/null; do :; done
 echo "Internet is up!"
