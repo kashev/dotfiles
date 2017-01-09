@@ -25,6 +25,7 @@ plugins=(
     colored-man-pages
     command-not-found
     git
+    pip
     sublime
     wd
     web-search
