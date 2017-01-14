@@ -6,7 +6,9 @@
 	"installed_packages":
 	[
 		"ApacheConf.tmLanguage",
+		"C++ Snippets",
 		"C++ Starting Kit",
+		"Clang Format",
 		"Clickable URLs",
 		"CMake",
 		"DocBlockr",

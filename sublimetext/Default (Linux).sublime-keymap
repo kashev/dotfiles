@@ -20,5 +20,11 @@
     /*
      * Keybindings for Markdown Preview.
      */
-    { "keys": ["ctrl+alt+m"], "command": "markdown_preview", "args": {"target": "browser"} }
+    { "keys": ["ctrl+alt+m"], "command": "markdown_preview", "args": {"target": "browser"} },
+
+    /*
+     * Keybindings for other stuff.
+     */
+    // Sort lines, case insensitve.
+    { "keys": ["alt+a"], "command": "sort_lines", "args": {"case_sensitive": false} },
 ]
