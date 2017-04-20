@@ -6,6 +6,8 @@
 	"installed_packages":
 	[
 		"ApacheConf.tmLanguage",
+		"AutoPEP8",
+		"C Improved",
 		"C++ Snippets",
 		"C++ Starting Kit",
 		"Clang Format",
@@ -14,6 +16,7 @@
 		"DocBlockr",
 		"Emmet",
 		"GitGutter",
+		"INI",
 		"Jinja2",
 		"LaTeXTools",
 		"Markdown Preview",
