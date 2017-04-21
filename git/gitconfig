@@ -34,3 +34,5 @@
 	default = simple
 [init]
 	templatedir = ~/.git_template
+[svn]
+	rmdir = 1
