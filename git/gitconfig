@@ -36,3 +36,5 @@
 	templatedir = ~/.git_template
 [svn]
 	rmdir = 1
+[remote "origin"]
+	prune = true
