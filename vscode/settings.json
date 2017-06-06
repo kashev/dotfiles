@@ -24,6 +24,9 @@
 // Trailing Spaces
     "trailing-spaces.deleteModifiedLinesOnly": true,
 
-// Rewrap Settings
-    "rewrap.wrappingColumn": 80
+// Rewrap
+    "rewrap.wrappingColumn": 80,
+
+// Files
+    "files.hotExit": "off",
 }
