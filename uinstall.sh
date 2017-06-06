@@ -10,6 +10,8 @@
 sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
 # JDK (Web Upd8)
 sudo add-apt-repository -y ppa:webupd8team/java
+# Tilix (Web Upd8)
+sudo add-apt-repository ppa:webupd8team/terminix
 # Chrome GNOME Shell connector
 sudo add-apt-repository ppa:ne0sight/chrome-gnome-shell
 
@@ -48,6 +50,9 @@ pkill code
 sudo apt install terminator
 terminator
 pkill terminator
+
+# Install Tilix.
+sudo apt install tilix
 
 # Clone Dotfiles
 mkdir ~/sw
