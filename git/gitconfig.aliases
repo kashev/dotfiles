@@ -91,9 +91,6 @@
     #############
     w = show
     #############
-    meldon = config diff.external /home/pkumar/.meld.py
-    meldof = config --remove-section diff
-    #############
     human = name-rev --name-only --refs=refs/heads/*
     #############
     pullsub = submodule update --init --recursive
