@@ -53,6 +53,8 @@ pkill terminator
 
 # Install Tilix.
 sudo apt install tilix
+# Add a symlink that tilix will want.
+sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
 
 # Clone Dotfiles
 mkdir ~/sw
