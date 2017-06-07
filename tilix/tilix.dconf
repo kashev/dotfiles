@@ -1,0 +1,27 @@
+[profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d]
+foreground-color='#F8F8F2'
+visible-name='Default'
+dim-color-set=false
+palette=['#272822', '#F92672', '#A6E22E', '#FFFA74', '#66D9EF', '#AE81FF', '#A1EFE4', '#F8F8F2', '#75715E', '#FB2626', '#A6E22E', '#F6FC39', '#66D9EF', '#AE81FF', '#A1EFE4', '#F9F8F5']
+badge-color-set=false
+use-system-font=false
+cursor-colors-set=false
+highlight-colors-set=false
+use-theme-colors=false
+bold-color-set=false
+font='Monospace 12'
+allow-bold=false
+terminal-title='${id} (${rows}x${columns}): ${title}'
+background-color='#000000'
+
+[/]
+prompt-on-close=true
+terminal-title-style='small'
+window-state=384
+theme-variant='dark'
+control-scroll-zoom=false
+window-style='normal'
+
+[keybindings]
+session-name='<Primary>e'
+app-preferences='<Primary>comma'
