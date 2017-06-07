@@ -17,11 +17,13 @@
 
 // Workbench
     "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.colorTheme": "Monokai",
 
 // File Explorer
     "explorer.autoReveal": false,
 
 // Trailing Spaces
+    "trailing-spaces.trimOnSave": true,
     "trailing-spaces.deleteModifiedLinesOnly": true,
 
 // Rewrap
