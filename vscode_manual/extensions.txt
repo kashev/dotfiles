@@ -1,6 +1,6 @@
-Tobiah.comment-snippets
 bbenoist.togglehs
 donjayamanne.python
+kevinkyang.auto-comment-blocks
 ms-vscode.cpptools
 robertohuertasm.vscode-icons
 shardulm94.trailing-spaces
