@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 # Install VSCode Extensions from file.
+#
+# Instead of writing this, could have just written:
+#     cat extensions.txt | xargs -L 1 code --install-extension
 
 from __future__ import print_function
 
