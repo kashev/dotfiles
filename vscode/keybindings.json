@@ -13,5 +13,17 @@
     { "key": "alt+shift+o", "command": "workbench.action.quickOpen" },
 
     // Rewrap Settings
-    { "key": "ctrl+shift+q", "command": "rewrap.rewrapComment" }
+    { "key": "ctrl+shift+q", "command": "rewrap.rewrapComment" },
+
+    // Format Selection (clang-format)
+    {
+        "key": "ctrl+alt+a",
+        "command": "editor.action.formatSelection",
+        "when": "editorHasDocumentSelectionFormattingProvider && editorHasSelection && editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+k ctrl+f",
+        "command": "-editor.action.formatSelection",
+        "when": "editorHasDocumentSelectionFormattingProvider && editorHasSelection && editorTextFocus && !editorReadonly"
+    }
 ]
