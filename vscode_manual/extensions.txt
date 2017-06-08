@@ -2,6 +2,6 @@ bbenoist.togglehs
 donjayamanne.python
 kevinkyang.auto-comment-blocks
 ms-vscode.cpptools
-robertohuertasm.vscode-icons
 shardulm94.trailing-spaces
 stkb.rewrap
+xaver.clang-format
