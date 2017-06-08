@@ -16,10 +16,12 @@ background-color='#000000'
 
 [/]
 prompt-on-close=true
+sidebar-on-right=false
 terminal-title-style='small'
-window-state=384
-theme-variant='dark'
+window-state=128
+theme-variant='system'
 control-scroll-zoom=false
+terminal-title-show-when-single=true
 window-style='normal'
 
 [keybindings]
