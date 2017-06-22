@@ -2,13 +2,24 @@
 " Kashev Dalmia | @kashev | kashev.dalmia@gmail.com
 " vimrc
 
-syntax on         " Turn on syntax highlighting.
+" Colors
+syntax on " Turn on syntax highlighting.
+
+" Spaces & Tabs
 set smartindent   " Turn on Smart Indenting.
 set tabstop=4     " Tabs are 4 spaces.
+set softtabstop=4 " Tabs inserted are 4 spaces.
 set expandtab     " Tabs are spaces.
 set shiftwidth=4  " When I indent, it's 4 spaces.
+
+" UI
 set number        " Show line numbers.
+set showcmd       " Show the last command entered.
+set wildmenu      " Visual autocomplete.
+
+" Editing
 
 " Rulers
 set ruler          " Show cursor position at the bottom of the screen.
 set colorcolumn=81 " Show a highlighted column *after* 80 characters.
+
