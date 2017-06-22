@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
-# we're using zsh, but on systems where chsh won't work
-# (like ldap, active directory logins),
-# this is an easy way to make sure zsh is the 'default login shell'.
 
-# exec zsh
+# we're using zsh, but on systems where chsh won't work (like ldap, active
+# directory logins), this is an easy way to make sure zsh is the 'default
+# interactive shell'.
+
+if [[ "$-" == *i* ]]; then
+    exec zsh
+fi
