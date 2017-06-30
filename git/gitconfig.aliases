@@ -16,6 +16,7 @@
     dck = diff --cached --check
     dt = difftool
     dtd = difftool --dir-diff
+    dn = diff --name-only
     dun = diff --name-only --diff-filter=U
     un = ls-files --others --exclude-standard
     #############
