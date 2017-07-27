@@ -1,0 +1,7 @@
+{
+      // reformat entire file if no text is selected
+      "use_entire_file_if_no_selection": false,
+
+      // report errors in popup dialog (in addition to status bar)
+      "popup_errors": true,
+}
