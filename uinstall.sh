@@ -87,6 +87,7 @@ sudo apt install chrome-gnome-shell
 # Install Other Utilities
 sudo apt -y install htop \
                     gimp \
+                    silversearcher-ag \
                     vlc \
                     browser-plugin-vlc \
                     meld \
