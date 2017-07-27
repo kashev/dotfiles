@@ -43,3 +43,6 @@ alias uptar="tar -zcvf"
 
 # My laptop is trash.
 alias fixbluetooth="sudo rfkill unblock bluetooth"
+
+# Remove all .pyc files from current working directory.
+alias rmpyc="find . -name \*.pyc -delete"
