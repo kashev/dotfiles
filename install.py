@@ -178,8 +178,8 @@ def install_folder(source, dest, force=False, prepend_dot=False):
                         force)
 
 
-def main():
-    """ Parse command line arguments, then do all the installs. """
+def parse_args():
+    """ Parse command line arguments. """
     parser = argparse.ArgumentParser(
         description=("Install dotfiles and settings from "
                      "http://github.com/kashev/dotfiles"))
@@ -201,7 +201,12 @@ def main():
                         help="change the login shell",
                         action="store_true")
 
-    args = parser.parse_args()
+    return parser.parse_args()
+
+
+def main():
+    """ Install all dotfiles. """
+    args = parse_args()
 
     if args.verbose:
         logging.basicConfig(level=logging.DEBUG)
