@@ -27,4 +27,13 @@
      */
     // Sort lines, case insensitve.
     { "keys": ["alt+a"], "command": "sort_lines", "args": {"case_sensitive": false} },
+
+    /*
+     * Keybindings for YAPF
+     */
+    { "keys": ["ctrl+alt+a"], "command": "yapf_selection", "context":
+        [
+            {"key": "selector", "operator": "equal", "operand": "source.python"}
+        ]
+    }
 ]
