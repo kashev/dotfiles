@@ -2,9 +2,7 @@
 # dotfiles
 # Kashev Dalmia | @kashev | kashev.dalmia@gmail.com
 # install.py
-
 """ The dotfiles installer script. """
-
 
 # FUTURE IMPORTS
 from __future__ import division
@@ -29,10 +27,8 @@ except ImportError as err:
                      .format(err))
     sys.exit(1)
 
-
 # CONSTANTS
 CONFIG_FILE = "config.yaml"
-
 
 # FUNCTIONS
 
@@ -60,8 +56,7 @@ def validate_config_file(config_file):
             configs['options']
 
     except IOError as err:
-        logging.critical('Problem opening {}:\n{}'
-                         .format(config_file, err))
+        logging.critical('Problem opening {}:\n{}'.format(config_file, err))
         retval = False
     except yaml.parser.ParserError as err:
         logging.critical("{} is not a valid .yaml file:\n{}"
@@ -96,8 +91,7 @@ def get_login_shell():
     """ Gets the current login shell:
         getent passwd $LOGNAME | cut -d: -f7
     """
-    output = subprocess.check_output("getent passwd $LOGNAME",
-                                     shell=True)
+    output = subprocess.check_output("getent passwd $LOGNAME", shell=True)
     return output.strip().rsplit(':', 1)[1]
 
 
@@ -111,8 +105,9 @@ def change_login_shell(shell):
     if new_shell != old_shell:
         try:
             logging.info("Changing default shell to '{}'.".format(shell))
-            print("Please enter your password for 'chsh' to {} : "
-                  .format(shell), end="")
+            print(
+                "Please enter your password for 'chsh' to {} : ".format(shell),
+                end="")
             sys.stdout.flush()
             subprocess.check_call(["chsh", "-s", new_shell])
             return True
@@ -126,8 +121,8 @@ def change_login_shell(shell):
 def clone_submodules(output=False):
     """ Clones all git submodules in the project. """
     logging.info("Cloning all submodules...")
-    output_text = subprocess.check_output(["git", "submodule", "update",
-                                           "--init", "--recursive"])
+    output_text = subprocess.check_output(
+        ["git", "submodule", "update", "--init", "--recursive"])
     if output:
         print(output_text, end='')
     logging.info("Done.")
@@ -173,9 +168,8 @@ def install_folder(source, dest, force=False, prepend_dot=False):
     logging.info("Installing symlinks for {}".format(os.path.basename(source)))
     prepend = '.' if prepend_dot else ''
     for f in os.listdir(source):
-        delete_and_link(os.path.join(source, f),
-                        os.path.join(dest, prepend + f),
-                        force)
+        delete_and_link(
+            os.path.join(source, f), os.path.join(dest, prepend + f), force)
 
 
 def parse_args():
@@ -184,22 +178,26 @@ def parse_args():
         description=("Install dotfiles and settings from "
                      "http://github.com/kashev/dotfiles"))
 
-    parser.add_argument("-f", "--force",
-                        help="deletes whatever is in the way. use with extreme"
-                             " caution to avoid loss of data",
-                        action="store_true")
+    parser.add_argument(
+        "-f",
+        "--force",
+        help="deletes whatever is in the way. use with extreme caution to avoid loss of data",
+        action="store_true")
 
-    parser.add_argument("-v", "--verbose",
-                        help="increase output verbosity",
-                        action="store_true")
+    parser.add_argument(
+        "-v",
+        "--verbose",
+        help="increase output verbosity",
+        action="store_true")
 
-    parser.add_argument("-c", "--check",
-                        help="check config, don't install",
-                        action="store_true")
+    parser.add_argument(
+        "-c",
+        "--check",
+        help="check config, don't install",
+        action="store_true")
 
-    parser.add_argument("--change-shell",
-                        help="change the login shell",
-                        action="store_true")
+    parser.add_argument(
+        "--change-shell", help="change the login shell", action="store_true")
 
     return parser.parse_args()
 
@@ -227,10 +225,10 @@ def main():
     # Install all paths.
     paths = configs['paths']
     for source in paths:
-        install_folder(os.path.join(os.getcwd(), source),
-                       os.path.expanduser(paths[source]['path']),
-                       args.force,
-                       paths[source]['dot'])
+        install_folder(
+            os.path.join(os.getcwd(), source),
+            os.path.expanduser(paths[source]['path']), args.force,
+            paths[source]['dot'])
 
     # Create virtualenv storage folder, if it does not exist.
     virtualenvs_dir = os.path.expanduser("~/.virtualenvs")
@@ -249,6 +247,7 @@ def main():
         # Only change the login shell if explicitly told to.
         if option == 'shell' and args.change_shell:
             change_login_shell(options[option])
+
 
 if __name__ == '__main__':
     main()
