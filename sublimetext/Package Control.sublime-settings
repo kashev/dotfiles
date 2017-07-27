@@ -5,6 +5,7 @@
 	],
 	"installed_packages":
 	[
+		"Anaconda",
 		"ApacheConf.tmLanguage",
 		"AutoPEP8",
 		"C Improved",
@@ -31,7 +32,6 @@
 		"Sass",
 		"SFTP",
 		"SideBarEnhancements",
-		"SublimePythonIDE",
 		"Text Pastry",
 		"TrailingSpaces",
 		"Wrap Plus",
