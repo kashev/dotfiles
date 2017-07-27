@@ -188,11 +188,17 @@ def main():
                         help="deletes whatever is in the way. use with extreme"
                              " caution to avoid loss of data",
                         action="store_true")
+
     parser.add_argument("-v", "--verbose",
                         help="increase output verbosity",
                         action="store_true")
+
     parser.add_argument("-c", "--check",
                         help="check config, don't install",
+                        action="store_true")
+
+    parser.add_argument("--change-shell",
+                        help="change the login shell",
                         action="store_true")
 
     args = parser.parse_args()
@@ -231,10 +237,12 @@ def main():
     for f in os.listdir("virtualenv_hooks"):
         shutil.copy(os.path.join("virtualenv_hooks", f), virtualenvs_dir)
 
-    # Apply system options
+    # Apply system options.
     options = configs['options']
     for option in options:
-        if option == 'shell':
+
+        # Only change the login shell if explicitly told to.
+        if option == 'shell' and args.change_shell:
             change_login_shell(options[option])
 
 if __name__ == '__main__':
