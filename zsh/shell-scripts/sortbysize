@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+# dotfiles
+# Kashev Dalmia | @kashev | kashev.dalmia@gmail.com
+
+# Sort the list of the given directory (or current directory) by size.
+
+DIRECTORY=${1:-.}
+du -sh $DIRECTORY/* | sort -h | tac
