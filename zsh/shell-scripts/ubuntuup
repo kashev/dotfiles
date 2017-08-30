@@ -5,5 +5,5 @@
 # One stop shop for living on the bleeding Ubuntu edge.
 set -e
 sudo apt update
-sudo apt upgrade
+sudo apt upgrade --with-new-pkgs
 sudo apt autoremove
