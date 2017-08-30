@@ -28,9 +28,6 @@ alias gs="g s"         # g is defined as git in the oh-my-zsh plugin. Clobbers
 alias gitd="git d"     # git d is defined in .gitconfig
 alias gitdd="git dtd"  # git dtd is definted in .gitconfig
 
-# SVN Aliases - To Make SVN More Like Git
-alias svnlog="svn log | less"
-
 # Development Aliases
 alias clion="$HOME/sw/clion/bin/clion.sh"
 alias pycharm="$HOME/sw/pycharm/bin/pycharm.sh"

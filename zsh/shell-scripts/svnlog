@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+# dotfiles
+# Kashev Dalmia | @kashev | kashev.dalmia@gmail.com
+
+# Always pipe calls to `svn log` to less when called through `svnlog`.
+
+svn log "$@" | less
