@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# dotfiles
+# Kashev Dalmia | @kashev | kashev.dalmia@gmail.com
+
+# Given a list of words, search for them (case insensitively) recursively in
+# the current directory.
+
+# TODO: Will this run in zsh? Line 19 is bash.
+
+CMD_PART="ag -i --color"
+CMD=""
+
+for word in "$@"
+do
+    CMD+="$CMD_PART $word | "
+done
+
+# Trim the last "| ".
+CMD="${CMD::-2}"
+
+echo $CMD
+eval $CMD
