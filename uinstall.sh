@@ -6,8 +6,12 @@
 # Script for setting up a fresh Ubuntu install.
 
 # Add Extra PPAs for...
-# Sublime Text 3 (Web Upd8)
-sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
+# Sublime Text 3 (Official PPA). Install the key, then install the dev channel.
+# NOTE: only works for paid users.
+wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+echo "deb https://download.sublimetext.com/ apt/dev/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+
+
 # JDK (Web Upd8)
 sudo add-apt-repository -y ppa:webupd8team/java
 # Tilix (Web Upd8)
@@ -30,8 +34,9 @@ sudo apt -y install git \
                     python-yaml
 sudo pip install virtualenvwrapper
 
-# Install Sublime Text 3 (Web Upd8)
-sudo apt -y install sublime-text-installer
+# Install Sublime Text 3 (official PPA)
+sudo apt -y install sublime-text
+
 # Get Sublime Text to Create Dotfiles Directories
 subl
 pkill subl
