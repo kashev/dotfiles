@@ -5,7 +5,6 @@
 	],
 	"installed_packages":
 	[
-		"Anaconda",
 		"ApacheConf.tmLanguage",
 		"AutoPEP8",
 		"C Improved",
@@ -27,6 +26,7 @@
 		"Open in Default Application",
 		"Package Control",
 		"PostScript",
+		"Pretty JSON",
 		"PyYapf Python Formatter",
 		"rsub",
 		"Sass",

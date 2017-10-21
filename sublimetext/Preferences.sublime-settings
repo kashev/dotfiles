@@ -9,7 +9,7 @@
 	],
 	"auto_indent": true,
 	"close_windows_when_empty": false,
-	"color_scheme": "Packages/User/Monokai Bright (SublimePythonIDE).tmTheme",
+	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
 	"detect_indentation": true,
 	"ensure_newline_at_eof_on_save": true,
 	"folder_exclude_patterns":
@@ -39,5 +39,5 @@
 	"tab_size": 4,
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": false,
-	"use_tab_stops": true
+	"use_tab_stops": true,
 }
