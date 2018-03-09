@@ -29,6 +29,9 @@
     cd = commit --amend
     cad = commit -a --amend
     #############
+    cp = cherry-pick
+    cpx = cherry-pick -x
+    #############
     a = add .
     #############
     ap = apply
