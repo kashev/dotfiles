@@ -1,0 +1,7 @@
+// GitGutter Settings - User
+{
+    /*
+     * I really hate this feature.
+     */
+    "show_line_annotation": "false",
+}
