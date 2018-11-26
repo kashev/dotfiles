@@ -65,6 +65,34 @@ export PATH=$PATH:$HOME/.shell-scripts
 # Thanks to http://nuclearsquid.com/writings/reporttime-in-zsh/
 REPORTTIME=10
 
+# https://superuser.com/a/578651/154363
+# http://contrapunctus.net/blog/2009/growl-upon-completion
+if [[ -x `which notify-send` ]]; then
+    notify-preexec-hook() {
+        zsh_notifier_cmd="$1"
+        zsh_notifier_time="`date +%s`"
+    }
+
+    notify-precmd-hook() {
+        local time_taken
+
+        if [[ "${zsh_notifier_cmd}" != "" ]]; then
+            time_taken=$(( `date +%s` - ${zsh_notifier_time} ))
+            if (( $time_taken > $REPORTTIME )); then
+                notify-send "task finished" \
+                    "'$zsh_notifier_cmd' exited after $time_taken seconds"
+            fi
+        fi
+        zsh_notifier_cmd=
+    }
+fi
+
+[[ -z $preexec_functions ]] && preexec_functions=()
+preexec_functions=($preexec_functions notify-preexec-hook)
+
+[[ -z $precmd_functions ]] && precmd_functions=()
+precmd_functions=($precmd_functions notify-precmd-hook)
+
 #############################
 # VIRTUAL ENV CONFIGURATION #
 #############################
