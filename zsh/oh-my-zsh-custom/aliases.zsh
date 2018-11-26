@@ -43,3 +43,6 @@ alias fixbluetooth="sudo rfkill unblock bluetooth"
 
 # Remove all .pyc files from current working directory.
 alias rmpyc="find . -name \*.pyc -delete"
+
+# When using grep, pipe to this to print only the filenames
+alias sedfilename="sed 's=.*/=='"
