@@ -5,19 +5,26 @@
 #
 # Script for setting up a fresh Ubuntu install.
 
+set -e
+set -x
+sudo -v
+
 # Add Extra PPAs for...
 # Sublime Text 3 (Official PPA). Install the key, then install the dev channel.
 # NOTE: only works for paid users.
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
 echo "deb https://download.sublimetext.com/ apt/dev/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
 
+# Visual Studio Code
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 
-# JDK (Web Upd8)
-sudo add-apt-repository -y ppa:webupd8team/java
+# JDK (Web Upd8) - TODO: do we really want this still?
+# sudo add-apt-repository -y ppa:webupd8team/java
+
 # Tilix (Web Upd8)
 sudo add-apt-repository ppa:webupd8team/terminix
-# Chrome GNOME Shell connector
-sudo add-apt-repository ppa:ne0sight/chrome-gnome-shell
 
 # Update PPA list
 sudo apt -y update
@@ -45,19 +52,15 @@ wget \
     --directory-prefix="$HOME/.config/sublime-text-3/Installed Packages/" \
     https://sublime.wbond.net/Package%20Control.sublime-package
 
-# TODO: Install Visual Studio Code
+# Install VS Code
+sudo apt -y install code
 
 # Get Visual Studio Code to make Config Directories
 code
 pkill code
 
-# Install Terminator
-sudo apt install terminator
-terminator
-pkill terminator
-
 # Install Tilix.
-sudo apt install tilix
+sudo apt -y install tilix
 # Add a symlink that tilix will want.
 sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
 
@@ -74,8 +77,8 @@ popd
 sudo apt -y install gnome-shell \
                     ubuntu-gnome-desktop
 
-# Install JDK for JetBrains IDEs
-sudo apt install -y oracle-java8-installer
+# Install JDK for JetBrains IDEs TODO: do we really want this?
+# sudo apt install -y oracle-java8-installer
 
 # Install Google Chrome
 sudo apt -y install libxss1 \
@@ -85,9 +88,6 @@ sudo apt -y install libxss1 \
 pushd /tmp
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome*.deb
-
-# Install Gnome Shell Chrome connector
-sudo apt install chrome-gnome-shell
 
 # Install Other Utilities
 sudo apt -y install htop \
@@ -101,12 +101,6 @@ sudo apt -y install htop \
                     lftp \
                     bpython \
                     bpython3
-
-# Install LaTeX Things
-sudo apt -y install texlive \
-                    latexmk \
-                    texlive-latex-extra \
-                    texlive-science
 
 # Install SSH Server
 sudo apt -y install openssh-server
