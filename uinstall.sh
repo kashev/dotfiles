@@ -64,6 +64,9 @@ sudo apt -y install tilix
 # Add a symlink that tilix will want.
 sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
 
+# Make it the default
+sudo update-alternatives --config x-terminal-emulator
+
 # Clone Dotfiles
 mkdir ~/sw
 pushd ~/sw
