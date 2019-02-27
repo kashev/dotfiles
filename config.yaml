@@ -24,10 +24,6 @@ paths:
     path: "~"
     dot: true
 
-  terminator:
-    path: "~/.config/terminator"
-    dot: false
-
   # ST3 settings location as installed by the official PPA
   sublimetext:
     path: "~/.config/sublime-text-3/Packages/User"
