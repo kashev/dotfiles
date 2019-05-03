@@ -31,6 +31,7 @@
     #############
     cp = cherry-pick
     cpx = cherry-pick -x
+    cpxm = cherry-pick -x -m 1
     #############
     a = add .
     #############
