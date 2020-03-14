@@ -6,7 +6,7 @@ CMD="subl ."
 
 for var in "$@"
 do
-    CMD="$CMD `find . | ag $var`"
+    CMD="$CMD `find . | ag --ignore=*.pyc $var`"
 done
 
 echo $CMD
