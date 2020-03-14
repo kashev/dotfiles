@@ -46,3 +46,6 @@ alias rmpyc="find . -name \*.pyc -delete"
 
 # When using grep, pipe to this to print only the filenames
 alias sedfilename="sed 's=.*/=='"
+
+# Python 3 is coming
+alias mkvirtualenv3='mkvirtualenv --python=`which python3`'
