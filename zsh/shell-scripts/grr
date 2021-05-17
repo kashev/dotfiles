@@ -7,7 +7,9 @@
 set -e
 set -x
 
-git checkout master
+BRANCH=${1:-master}
+
+git checkout $BRANCH
 git pull
 git checkout -
-git rebase master
+git rebase $BRANCH
