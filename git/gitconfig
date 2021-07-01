@@ -37,3 +37,5 @@
 	rmdir = 1
 [remote "origin"]
 	prune = true
+[pager]
+	branch = false
