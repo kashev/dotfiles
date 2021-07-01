@@ -6,6 +6,9 @@
 	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
 	excludesfile = ~/.gitignore_global
 	autocrlf = false
+	# Fix git branch in newer git by not making less page if there isn't a lot of output.
+	# https://stackoverflow.com/a/55395928/1473320
+	pager = less -FX
 [web]
 	browser = google-chrome
 [rerere]
@@ -37,5 +40,3 @@
 	rmdir = 1
 [remote "origin"]
 	prune = true
-[pager]
-	branch = false
