@@ -54,7 +54,7 @@ fi
 
 # Check for source files with no newline at end of file. Note that this
 # searches based on file suffix.
-suffixes=("h" "c" "cc" "cpp" "py" "zsh")
+suffixes=("h" "c" "cc" "cpp" "py" "zsh", "java", "js", "jsx", "md")
 search=""
 for i in "${suffixes[@]}"
 do

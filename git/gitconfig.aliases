@@ -18,6 +18,7 @@
     dtd = difftool --dir-diff
     dn = diff --name-only
     dun = diff --name-only --diff-filter=U
+    dsn = diff --name-only --staged
     un = ls-files --others --exclude-standard
     #############
     c = commit
