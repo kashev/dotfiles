@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# https://stackoverflow.com/a/12967264/1473320
+
+while "$@"; do :; done
