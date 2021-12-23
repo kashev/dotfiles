@@ -5,4 +5,4 @@
 # Sort the list of the given directory (or current directory) by size.
 
 DIRECTORY=${1:-.}
-du -sh $DIRECTORY/* | sort -h | tail -r
+du -sh $DIRECTORY/* | sort -hr
