@@ -32,7 +32,6 @@ alias sedfilename="sed 's=.*/=='"
 # Python
 alias mkvirtualenv3='mkvirtualenv --python=`which python3`'
 alias bpy="bpython"     # http://bpython-interpreter.org/
-alias bpy3="bpython3"   # http://bpython-interpreter.org/
 alias rmpyc="find . -name \*.pyc -delete"  # Remove all .pyc files from current working directory.
 
 # Programs
