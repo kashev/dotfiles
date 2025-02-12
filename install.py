@@ -4,11 +4,6 @@
 # install.py
 """ The dotfiles installer script. """
 
-# FUTURE IMPORTS
-from __future__ import division
-from __future__ import print_function
-from __future__ import unicode_literals
-
 # IMPORTS
 import argparse
 import logging
@@ -22,7 +17,7 @@ try:
     import yaml
 except ImportError as err:
     logging.critical("Missing dependency: {}. "
-                     "Run 'sudo pip install pyyaml' or install the package "
+                     "Run 'pip install pyyaml' or install the package "
                      "'python-yaml' with your system package manager."
                      .format(err))
     sys.exit(1)
@@ -36,14 +31,14 @@ CONFIG_FILE = "config.yaml"
 def validate_config_file(config_file):
     """ Check that the configuration file exists and is both valid yaml and
         contains the information necessary to run the installer. Checks for
-        existance of necessary keys by simply referecing them.
+        existence of necessary keys by simply referencing them.
     """
     logging.info("Validating {}...".format(config_file))
     retval = True
     try:
         with open(config_file, 'r') as f:
             data = f.read()
-            configs = yaml.load(data)
+            configs = yaml.safe_load(data)
 
             paths = configs['paths']
             for source in paths:
@@ -78,7 +73,7 @@ def validate_files():
     """ Validate and syntax check all the files it is possible to check in the
         entire project, including this script.
     """
-    logging.info("Validating projet...")
+    logging.info("Validating project...")
 
     retval = True
     retval &= validate_config_file(CONFIG_FILE)
@@ -176,7 +171,7 @@ def parse_args():
     """ Parse command line arguments. """
     parser = argparse.ArgumentParser(
         description=("Install dotfiles and settings from "
-                     "http://github.com/kashev/dotfiles"))
+                     "https://github.com/kashev/dotfiles"))
 
     parser.add_argument(
         "-f",
@@ -220,7 +215,7 @@ def main():
     # Load config file.
     with open(CONFIG_FILE, 'r') as f:
         data = f.read()
-        configs = yaml.load(data)
+        configs = yaml.safe_load(data)
 
     # Install all paths.
     paths = configs['paths']
