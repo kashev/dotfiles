@@ -7,9 +7,22 @@
 set -e
 set -x
 
+INTERACTIVE=
+if [ "$1" = "-i" ]; then
+    INTERACTIVE=-i
+    shift
+fi
+
 BRANCH=${1:-master}
 
-git checkout $BRANCH
-git pull
-git checkout -
-git rebase $BRANCH
+git fetch origin "$BRANCH"
+
+# Fast-forward the local branch too, in whichever worktree has it checked out.
+WORKTREE=$(git worktree list --porcelain | awk -v b="refs/heads/$BRANCH" '/^worktree /{p=$2} $0=="branch "b{print p}')
+if [ -n "$WORKTREE" ]; then
+    git -C "$WORKTREE" merge --ff-only "origin/$BRANCH"
+else
+    git fetch origin "$BRANCH:$BRANCH"
+fi
+
+git rebase $INTERACTIVE "origin/$BRANCH"
