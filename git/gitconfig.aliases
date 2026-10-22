@@ -51,6 +51,17 @@
     bd = branch -d
     br = branch -r
     #############
+    wt = worktree
+    wta = worktree add
+    wtab = "!f() { git worktree add -b \"$1\" \"${2:-../$1}\"; }; f"
+    wtl = worktree list
+    wtm = worktree move
+    wtr = worktree remove
+    wtrf = worktree remove --force
+    wtp = worktree prune -v
+    wtlk = worktree lock
+    wtul = worktree unlock
+    #############
     f = fetch
     fo = fetch origin
     #############

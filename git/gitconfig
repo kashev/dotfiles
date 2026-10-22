@@ -31,11 +31,12 @@
 [credential]
 	helper = cache
 [diff]
-	tool = meld
+	tool = idea
 [push]
 	default = simple
 [init]
 	templatedir = ~/.git_template
+	defaultBranch = main
 [svn]
 	rmdir = 1
 [remote "origin"]
